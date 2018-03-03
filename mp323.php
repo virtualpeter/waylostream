@@ -34,6 +34,20 @@
     //$filename = "\"".$filename."\"";
 
     // stream a filename back to dbtest23
+    
+    function get_content($URL){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_URL, $URL);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        return $data;
+
+    }
+    
+    echo get_content($filename);
+    /*
+    echo get_content('http://example.com');
     if(is_file($filename))
     {
         header('Content-Type: audio/mpeg');
@@ -41,7 +55,8 @@
         header('Content-length: '.filesize($filename));
         header('Cache-Control: no-cache');
         header("Content-Transfer-Encoding: chunked");
-        readfile($filename);
+        //readfile($filename);
+        file_get_contents($filename);
         //echo "Great: it's a file!";
     }
     else {
