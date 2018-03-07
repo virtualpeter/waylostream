@@ -1,6 +1,8 @@
 <?php
 /* Displays user information and some useful messages */
+require 'db.php';
 session_start();
+
 
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
@@ -13,13 +15,18 @@ else {
     $last_name = $_SESSION['last_name'];
     $email = $_SESSION['email'];
     $active = $_SESSION['active'];
+    $result = $mysqli->query("SELECT * FROM users WHERE email='$email'");
+    $user = $result->fetch_assoc();
+    $credits = $user['credits'];
+
+
 }
 ?>
 <!DOCTYPE html>
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Welcome <?= $first_name.' '.$last_name ?></title>
+  <title>Welcome <?= $first_name.' '.$last_name?></title>
   <?php include 'css/css.html'; ?>
 </head>
 
@@ -65,6 +72,19 @@ else {
 
     </div>
 
+<a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
+<br />
+<br />
+<br />
+
+<?php
+
+    echo "You have: ";
+    echo $credits;
+    echo " credits";
+?>
+<br />
+<br />
 CEM <br />
 <!-- play audio file but stop it from being downloadable -->
 <audio controls controlsList="nodownload noremoteplayback">
@@ -77,6 +97,11 @@ EXCHANGE PLACE <br />
 <audio controls controlsList="nodownload noremoteplayback">
 <!-- get the source as a file from -->
 <source src="http://www.waylostreams.com/phptest/mp323.php?id=2" type="audio/mpeg">
+<br />
+<br />
+
+
+
     
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/index.js"></script>
