@@ -20,21 +20,50 @@
     
     // get song id from page call
     $id = $_GET['id'];
+    $user = $_GET['user'];
+    echo "ID is ";
     echo $id;
+    echo "  user is ";
+    echo $user;
+    echo " ";
     $id = $mysqli->escape_string($id);
+    $user_id = $mysqli->escape_string($user);
+    
     // sean's user ID !!!
-    $user_id = 13;
+    //$user_id = 13;
+    // get user ID
     // fake purchase cost
     $purchase_cost = 1;
-    $user_id = $mysqli->escape_string($user_id);
-    $exists = $mysqli->query("SELECT * FROM streams WHERE user_id='.$user_id.' AND song_id ='$id'") or die($mysqli->error);
+
+    $exists = $mysqli->query("SELECT stream_id FROM streams WHERE user_id='$user_id' AND song_id ='$id'") or die($mysqli->error);
+    
     $exists2 = $exists->fetch_assoc();
+    $streamid = $exists2['stream_id'];
+    echo " stream id is ";
+    echo $streamid;
+    echo " ";
 
     if ($exists2 !== null)
+    {
     // if song has been played before by user do nothing for now
     echo "stream exists";
     // increment streams counter , take credits off user
+    // get streams counter
+    $counter = $mysqli->query("SELECT number_plays FROM streams WHERE user_id='$user_id' AND song_id ='$id'") or die($mysqli->error);
+        $counter = $counter->fetch_assoc();
+        $counter = $counter['number_plays'];
+
+        $counter = $counter + 1;
+        echo " number plays is ";
+        echo $counter;
+        echo " ";
+        $sql = "UPDATE streams SET number_plays='$counter' WHERE song_id ='$id'";
+        $mysqli->query($sql) or die($mysqli->error);
+        
+     
+    }
     else
+    {
     echo "stream doesn't exist";
     // create stream in table
     $stream_id = $mysqli->escape_string('1');
@@ -47,7 +76,7 @@
     
     $mysqli->query($sql) or die($mysqli->error);
     
-    
+    }
     echo "<br>";
     
     //function get_content($URL){
