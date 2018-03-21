@@ -71,7 +71,7 @@ else {
           <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
 
     </div>
-
+// load up more credits
 <a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
 <br />
 <br />
@@ -82,6 +82,25 @@ else {
     echo "You have: ";
     echo $credits;
     echo " credits";
+    echo "<br>";
+    $song_id = 1;
+    
+    // fetch the logged in users email
+    $email = $mysqli->escape_string($_SESSION['email']);
+    $result = $mysqli->query("SELECT * FROM users WHERE email='$email'");
+    $user = $result->fetch_assoc();
+    $user_id = $user['id'];
+    
+    // grab the song purchase cost from the songs table
+    
+    $song_id = $mysqli->escape_string($song_id);
+    $result = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
+    $song = $result->fetch_assoc();
+    $purchase_cost = $song['purchase_cost'];
+    
+// this code below a sticks up an html audio player and calls the source file
+// from the database. It selects the URL of the source and then
+// streams the file secretly
 ?>
 <br />
 <br />
@@ -90,6 +109,7 @@ CEM <br />
 <audio controls controlsList="nodownload noremoteplayback">
 <!-- get the source as a file from -->
 <source src="http://www.waylostreams.com/phptest/mp323.php?id=1" type="audio/mpeg">
+audio.onplay =
 </audio>
 <br />
 EXCHANGE PLACE <br />

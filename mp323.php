@@ -1,5 +1,10 @@
+// this file takes a song_id as an argument
+// and streams the song as a file after looking up it's URL in the database 
+
 <?php
     
+    require '../login-system/db.php';
+    session_start();
    // do these need to be global  ?
     global $id;
     global $sql;
@@ -30,11 +35,7 @@
     // get the URL from the array result
     //echo $row;
     $filename = ($row['URL']);
-    //echo $filename;
-    //$filename = "\"".$filename."\"";
-
-    // stream a filename back to dbtest23
-    
+// function to stream file 
     function get_content($URL){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -46,20 +47,6 @@
     }
     
     echo get_content($filename);
-    /*
-    echo get_content('http://example.com');
-    if(is_file($filename))
-    {
-        header('Content-Type: audio/mpeg');
-        header('Content-Disposition: inline;filename="'.basename($filename).'"');
-        header('Content-length: '.filesize($filename));
-        header('Cache-Control: no-cache');
-        header("Content-Transfer-Encoding: chunked");
-        //readfile($filename);
-        file_get_contents($filename);
-        //echo "Great: it's a file!";
-    }
-    else {
-        die("Error: File not found.");}
+
     
 ?>
