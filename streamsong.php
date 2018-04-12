@@ -1,13 +1,15 @@
-// this file updates the streams table in the database
-// the user and song_id are passed in with say streamsong.php?id=1&user=13
-// it checks to see if the user has already played the song if so it increments the counter
-// if the user has never played the song it creates a new row in the DB linking the song to the user 
+
 
 <?php
+    // this file updates the streams table in the database
+    // the user and song_id are passed in with say streamsong.php?id=1&user=13
+    // it checks to see if the user has already played the song if so it increments the counter
+    // if the user has never played the song it creates a new row in the DB linking the song to the user
     // connection settings
-    require '../login-system/db.php';
-    session_start();
+    //require '../login-system/db.php';
+    //session_start();
     // do these need to be global  ?
+    /*
     global $id;
     global $sql;
     global $mysqli;
@@ -15,6 +17,7 @@
     global $row;
     global $filename;
     
+     */
     /* Database connection settings */
     $host = 'localhost';
     $user = 'seanwayland';
@@ -56,12 +59,25 @@
         $counter = $counter->fetch_assoc();
         $counter = $counter['number_plays'];
         $counter = $counter + 1;
+        $counter = $mysqli->escape_string($counter);
         //echo " number plays is ";
         //echo $counter;
         //echo " ";
+        $date = date('Y-m-d');
+        $date = $mysqli->escape_string($date);
         $sql = "UPDATE streams SET number_plays='$counter' WHERE song_id ='$id'";
-        $mysqli->query($sql) or die($mysqli->error);
         
+        $mysqli->query($sql) or die($mysqli->error);
+        $sql = "UPDATE streams SET last_access_time= '$date' WHERE song_id ='$id'";
+        $mysqli->query($sql) or die($mysqli->error);
+        //echo $date;
+        //echo " ";
+        //echo $counter;
+        //echo " ";
+        //echo $id;
+        //echo " ";
+        
+        echo $counter;
         
     }
     else
@@ -77,9 +93,13 @@
         . "VALUES ('$user_id','$id','$purchase_cost', $number_plays, now(), now())";
         
         $mysqli->query($sql) or die($mysqli->error);
+        //echo $counter;
+        //echo " vanessas";
         
     }
-    echo "<br>";
+    
+    //echo $counter;
+    //echo "<br>";
     
 
     

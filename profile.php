@@ -106,23 +106,49 @@ else {
 <br />
 CEM <br />
 <!-- play audio file but stop it from being downloadable -->
-<audio controls controlsList="nodownload noremoteplayback">
+<audio controls onplay="log_stream1()" controls List="nodownload noremoteplayback">
 <!-- get the source as a file from -->
 <source src="http://www.waylostreams.com/phptest/mp323.php?id=1" type="audio/mpeg">
-audio.onplay =
 </audio>
+<script>
+var log_stream1 = function()
+{ $.ajax({ url: "http://www.waylostreams.com/phptest/streamsong.php?id=1&user=<?php echo $user_id;?>",
+           method: "GET"
+           }).done(function(response)
+                   {
+                   var update_text = "you have played this " + response + " times";
+                   $('#response1').empty().append(update_text);
+                   });
+};
+</script>
 <br />
+<span id="response1"></span>
+<br />
+
 EXCHANGE PLACE <br />
+
 <!-- play audio file but stop it from being downloadable -->
-<audio controls controlsList="nodownload noremoteplayback">
+<audio controls onplay="log_stream2()" controls List="nodownload noremoteplayback">
 <!-- get the source as a file from -->
 <source src="http://www.waylostreams.com/phptest/mp323.php?id=2" type="audio/mpeg">
+</audio>
+
+
+<script>
+var log_stream2 = function () {
+    $.ajax({
+           url: "http://www.waylostreams.com/phptest/streamsong.php?id=1&user=<?php echo $user_id;?>",
+           method: "GET"
+           }).done(function(response) {
+                   var update_text = "you have played this " + response + " times";
+                   $('#response2').empty().append(update_text);
+                   });
+};
+
+</script>
 <br />
+<span id="response2"></span>
 <br />
-
-
-
-    
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/index.js"></script>
 

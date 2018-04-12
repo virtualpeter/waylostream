@@ -1,6 +1,3 @@
-// this file takes a song_id as an argument
-// and streams the song as a file after looking up it's URL in the database 
-
 <?php
     
     require '../login-system/db.php';
