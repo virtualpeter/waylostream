@@ -106,41 +106,18 @@ else {
 <br />
 CEM <br />
 <!-- play audio file but stop it from being downloadable -->
-<audio controls onplay="log_stream1()" controls List="nodownload noremoteplayback">
+<audio controls autobuffer onplay="log_stream1()" onpause="isPaused()" controls List="nodownload noremoteplayback">
 <!-- get the source as a file from -->
 <source src="http://www.waylostreams.com/phptest/mp323.php?id=1" type="audio/mpeg">
 </audio>
-<script>
-var log_stream1 = function()
-{ $.ajax({ url: "http://www.waylostreams.com/phptest/streamsong.php?id=1&user=<?php echo $user_id;?>",
-           method: "GET"
-           }).done(function(response)
-                   {
-                   var update_text = "you have played this " + response + " times";
-                   $('#response1').empty().append(update_text);
-                   });
-};
-</script>
-<br />
-<span id="response1"></span>
-<br />
-
-EXCHANGE PLACE <br />
-
-<!-- play audio file but stop it from being downloadable -->
-<audio controls onplay="log_stream2()" controls List="nodownload noremoteplayback">
-<!-- get the source as a file from -->
-<source src="http://www.waylostreams.com/phptest/mp323.php?id=2" type="audio/mpeg">
-</audio>
-
 
 <script>
-var log_stream2 = function () {
+var isPaused = function () {
     $.ajax({
-           url: "http://www.waylostreams.com/phptest/streamsong.php?id=1&user=<?php echo $user_id;?>",
+           url: "http://www.waylostreams.com/phptest/pauseSong.php?id=1&user=<?php echo $user_id;?>",
            method: "GET"
-           }).done(function(response) {
-                   var update_text = "you have played this " + response + " times";
+           }).done(function() {
+                   var update_text = "you have paused this ";
                    $('#response2').empty().append(update_text);
                    });
 };
@@ -151,6 +128,86 @@ var log_stream2 = function () {
 <br />
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/index.js"></script>
+<br />
+<br />
+<script>
+
+<script>
+var log_stream1 = function () {
+    $.ajax({
+           url: "http://www.waylostreams.com/phptest/streamsong.php?id=1&user=<?php echo $user_id;?>",
+           method: "GET"
+           }).done(function(response) {
+                   var update_text = "you have played this " + response + " times";
+                   $('#response3').empty().append(update_text);
+                   });
+};
+
+</script>
+
+<br />
+<span id="response3"></span>
+<br />
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="js/index.js"></script>
+<br />
+<br />
+
+
+
+
+
+EXCHANGE PLACE <br />
+
+<!-- play audio file but stop it from being downloadable -->
+<audio controls auto buffer onplay="log_stream2()"  onpause="isPaused2()" controls List="nodownload noremoteplayback">
+<!-- get the source as a file from -->
+<source src="http://www.waylostreams.com/phptest/mp323.php?id=2" type="audio/mpeg">
+</audio>
+
+<script>
+var isPaused2 = function () {
+    $.ajax({
+           url: "http://www.waylostreams.com/phptest/pauseSong.php?id=2&user=<?php echo $user_id;?>",
+           method: "GET"
+           }).done(function() {
+                   var update_text = "you have paused this ";
+                   $('#response3').empty().append(update_text);
+                   });
+};
+
+</script>
+<br />
+<span id="response3"></span>
+<br />
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="js/index.js"></script>
+<br />
+<br />
+<script>
+
+<script>
+var log_stream2 = function () {
+    $.ajax({
+           url: "http://www.waylostreams.com/phptest/streamsong.php?id=2&user=<?php echo $user_id;?>",
+           method: "GET"
+           }).done(function(response) {
+                   var update_text = "you have played this " + response + " times";
+                   $('#response4').empty().append(update_text);
+                   });
+};
+
+</script>
+
+<br />
+<span id="response4"></span>
+<br />
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="js/index.js"></script>
+<br />
+<br />
+
+
 
 </body>
 </html>

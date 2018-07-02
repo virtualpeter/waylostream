@@ -37,6 +37,31 @@
     $id = $mysqli->escape_string($id);
     $user_id = $mysqli->escape_string($user);
     
+    // check to see if song is paused
+    
+        $isPaused = $mysqli->query("SELECT isPaused FROM users WHERE user_id='$user_id'") or die($mysqli->error);
+    // if it is paused set isPaused to 0 and return the number of plays counter
+        if ($isPaused == $id)
+    {
+        
+        $id = $mysqli->escape_string($id);
+        // setPaused to 0
+        $sql = "UPDATE users SET isPaused='0' WHERE user_id ='$user_id'";
+        $mysqli->query($sql) or die($mysqli->error);
+        // get number of plays and return it 
+        $counter = $mysqli->query("SELECT number_plays FROM streams WHERE user_id='$user_id' AND song_id ='$id'") or die($mysqli->error);
+        $counter = $counter->fetch_assoc();
+        $counter = $counter['number_plays'];
+        
+        echo $counter;
+        
+    }
+    
+    else
+    {
+    // if it is not paused update streams
+
+    
     // sean's user ID !!!
     //$user_id = 13;
     // get user ID
@@ -100,7 +125,7 @@
     
     //echo $counter;
     //echo "<br>";
-    
+    }
 
     
     ?>
