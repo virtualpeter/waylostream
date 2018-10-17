@@ -72,14 +72,6 @@ if ($exists2 !== null)
     $mysqli->query($sql) or die($mysqli->error);
     $sql = "UPDATE streams SET last_access_time= '$date' WHERE user_id ='$user_id' AND song_id ='$id'";
     $mysqli->query($sql) or die($mysqli->error);
-
-    $result = $mysqli->query("SELECT * FROM users WHERE id='$user_id'");
-    $user = $result->fetch_assoc();
-    $credits = $user['credits'];
-    $credits--;
-    $sql = "UPDATE users SET credits= '$credits' WHERE id ='$user_id'";
-    $mysqli->query($sql) or die($mysqli->error);
-
     //echo $date;
     //echo " ";
     //echo $counter;

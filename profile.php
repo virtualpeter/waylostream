@@ -105,12 +105,26 @@ else {
 <br />
 <br />
 CEM <br />
+
+
+  <a href="http://www.waylostreams.com/login-system/playSong.php?id=1&user=<?php echo $user_id;?>">Listen to CEM</a>
+
+  <br />
+  <br />
+
+
 <!-- play audio file but stop it from being downloadable -->
-<audio controls autobuffer onplay="log_stream1()" onpause="isPaused()" controls List="nodownload noremoteplayback">
-<!-- get the source as a file from -->
+<!-- <audio controls autobuffer onplay="log_stream1()" onpause="isPaused()" controls List="nodownload noremoteplayback">  -->
+
+<!-- get the source as a file from -
 <source src="http://www.waylostreams.com/phptest/mp323.php?id=1" type="audio/mpeg">
 </audio>
 
+-->
+
+
+
+<!--
 <script>
 var isPaused = function () {
     $.ajax({
@@ -122,7 +136,10 @@ var isPaused = function () {
                    });
 };
 
+
 </script>
+
+
 <br />
 <span id="response2"></span>
 <br />
@@ -155,13 +172,20 @@ var log_stream1 = function () {
 
 
 
-
+-->
 
 EXCHANGE PLACE <br />
 
+  <a href="http://www.waylostreams.com/login-system/playSong.php?id=2&user=<?php echo $user_id;?>">Listen to CEM</a>
+
+  <br />
+  <br />
+
 <!-- play audio file but stop it from being downloadable -->
+
+ <!--
 <audio controls auto buffer onplay="log_stream2()"  onpause="isPaused2()" controls List="nodownload noremoteplayback">
-<!-- get the source as a file from -->
+-- get the source as a file from
 <source src="http://www.waylostreams.com/phptest/mp323.php?id=2" type="audio/mpeg">
 </audio>
 
@@ -198,6 +222,8 @@ var log_stream2 = function () {
 };
 
 </script>
+
+-->
 
 <br />
 <span id="response4"></span>
