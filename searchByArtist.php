@@ -103,7 +103,7 @@ else {
           <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
 
     </div>
-// load up more credits
+
 <a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
 <br />
 <br />
@@ -135,27 +135,36 @@ else {
 // streams the file secretly
 // THIS IS THE MAIN PAGE STUFF HERE ABOVE IS STANDARD CODE
 ?>
-<br />
-<br />
+
 
   <?php
 // get artist id from page call
 $artist = $_GET['artist'];
-// search by artist
+
 $exists = $mysqli->query("SELECT id FROM songs WHERE artist='$artist'") or die($mysqli->error);
-// get numeric array out of result
-$Songs = mysqli_fetch_array($exists, MYSQLI_NUM);
 
 
-    foreach($Songs as $key){
+print "<br>";
 
-  echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$key&user=$user_id'>Listen</a>";
+foreach($exists as $key){
+
+    $name =$key["id"];
+
+    $n = $mysqli->escape_string($name);
+    $reslt = $mysqli->query("SELECT * FROM songs WHERE id='$n'") or die($mysqli->error);
+    $song = $reslt->fetch_assoc();
+    $song_name = $song['title'];
+    echo $song_name;
+
+  echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>  Listen</a>";
+  print "<br>";
   print "<br>";
 
   }
 
 ?>
   <br />
+  <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
   <br />
 
 
