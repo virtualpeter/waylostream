@@ -19,7 +19,7 @@ else {
     $user = $result->fetch_assoc();
     $credits = $user['credits'];
 
-
+//   <?php include 'css/css.html';
 }
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ else {
 <head>
   <meta charset="UTF-8">
   <title>WAYLOSTREAM <?= $first_name.' '.$last_name?></title>
-  <?php include 'css/css.html'; ?>
+
 </head>
 
 <body>
@@ -71,11 +71,13 @@ else {
           <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
 
     </div>
-// load up more credits
+
+  <br />
+  <br />
 <a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
 <br />
 <br />
-<br />
+
 
 <?php
 
@@ -101,7 +103,23 @@ else {
 // this code below a sticks up an html audio player and calls the source file
 // from the database. It selects the URL of the source and then
 // streams the file secretly
+
 ?>
+
+  </head>
+  <form action="searchResult.php" method="post">
+      <p>Search Artists: <input type="text" name="name" /></p>
+
+      <p><input type="submit" /></p>
+  </form>
+
+
+  <form action="searchResultAlbums.php" method="post">
+      <p>Search Albums: <input type="text" name="name" /></p>
+
+      <p><input type="submit" /></p>
+  </form>
+
 <br />
 <br />
 CEM <br />

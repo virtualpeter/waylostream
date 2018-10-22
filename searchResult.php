@@ -1,29 +1,46 @@
 
-<?php include 'pageHeader.php';
-//search code
-//error_reporting(0);
-if($_REQUEST['submit']){
-    $name = $_POST['name'];
+<?php include 'pageHeader.php';?>
 
-    if(empty($name)){
-        $make = '<h4>You must type a word to search!</h4>';
-    }else{
-        $make = '<h4>No match found!</h4>';
-        $sele = "SELECT * FROM artists WHERE name LIKE '%$name%'";
-        $result = $mysqli->query($sele);
 
-        if($mak = mysqli_num_rows($result) > 0){
-            while($row = mysqli_fetch_assoc()($result)){
-                echo '<h4> Id						: '.$row['id'];
-                echo '<br> name						: '.$row['name'];
-                echo '</h4>';
-            }
-        }else{
-            echo'<h2> Search Result</h2>';
 
-            print ($make);
-        }
-        mysqli_free_result($result);
-    }
-}
+  <?php
+
+
+  $artist =$_POST['name'];
+  $artist = $mysqli->escape_string($artist);
+
+  //echo $artist;
+  $exists = $mysqli->query("SELECT id FROM artists WHERE artist_name LIKE'$artist'") or die($mysqli->error);
+ // print_r($exists);
+
+  print "<br>";
+
+  echo "RESULTS: ";
+  print "<br>";
+
+  /// print out links for all the songs found by the search
+  foreach($exists as $key){
+
+      $name =$key["id"];
+
+      $n = $mysqli->escape_string($name);
+      $reslt = $mysqli->query("SELECT * FROM artists WHERE id='$n'") or die($mysqli->error);
+      $name = $reslt->fetch_assoc();
+      $name = $name['artist_name'];
+
+
+      echo "<a href='http://www.waylostreams.com/login-system/searchByArtist.php?id=$n&user=$user_id'>listen to $name</a>";
+
+      print "<br>";
+      print "<br>";
+
+  }
+
+  // return to home page link
+  ?>
+<br />
+<a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+<br />
+
+
 

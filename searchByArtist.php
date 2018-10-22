@@ -1,15 +1,12 @@
 <?php include 'pageHeader.php';?>
 
 
-  <?php
+<?php
 // get artist id from page call
 $artist = $_GET['artist'];
 
-// search for all songs by artist
-
 $exists = $mysqli->query("SELECT id FROM songs WHERE artist='$artist'") or die($mysqli->error);
-
-
+//print_r($exists);
 
 
 print "<br>";
@@ -34,9 +31,9 @@ foreach($exists as $key){
     $reslt = $mysqli->query("SELECT * FROM songs WHERE id='$n'") or die($mysqli->error);
     $song = $reslt->fetch_assoc();
     $song_name = $song['title'];
-    echo $song_name;
 
-  echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>  Listen</a>";
+
+  echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>Listen to $song_name</a>";
   print "<br>";
   print "<br>";
 

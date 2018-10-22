@@ -9,6 +9,7 @@ $album = $_GET['album'];
 // search for all songs by artist given
 
 $exists = $mysqli->query("SELECT id FROM songs WHERE album='$album'") or die($mysqli->error);
+//print_r($exists);
 
 print "<br>";
 
