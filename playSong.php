@@ -81,6 +81,10 @@ if ($exists2 !== null)
     $sql = "UPDATE users SET credits= '$credits' WHERE id ='$user_id'";
     $mysqli->query($sql) or die($mysqli->error);
 
+    if($credits<0){
+        header("Location: http://www.waylostreams.com/login-system/profile.php");
+    }
+
     //echo $date;
     //echo " ";
     //echo $counter;
