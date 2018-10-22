@@ -1,10 +1,15 @@
 <?php include 'pageHeader.php';?>
 
-
 <?php
+/* Displays user information and some useful messages */
+require 'db.php';
+
+
+
+
 // get artist id from page call
 $artist = $_GET['artist'];
-
+echo $artist;
 $exists = $mysqli->query("SELECT id FROM songs WHERE artist='$artist'") or die($mysqli->error);
 //print_r($exists);
 

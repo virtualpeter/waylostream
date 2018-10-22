@@ -1,10 +1,15 @@
 <?php include 'pageHeader.php';?>
 
-
 <?php
+/* Displays user information and some useful messages */
+require 'db.php';
+
+
+
+
 // get artist id from page call
 $album = $_GET['album'];
-
+echo $album;
 
 // search for all songs by artist given
 
