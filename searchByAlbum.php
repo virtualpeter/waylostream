@@ -9,7 +9,7 @@ require 'db.php';
 
 // get artist id from page call
 $album = $_GET['id'];
-echo $album;
+//echo $album;
 
 // search for all songs by artist given
 
@@ -39,9 +39,9 @@ foreach($exists as $key){
     $reslt = $mysqli->query("SELECT * FROM songs WHERE id='$n'") or die($mysqli->error);
     $song = $reslt->fetch_assoc();
     $song_name = $song['title'];
-    echo $song_name;
 
-    echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>  Listen</a>";
+
+    echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>  Listen to $song_name</a>";
     print "<br>";
     print "<br>";
 

@@ -88,7 +88,7 @@ if ($exists2 !== null)
     //echo $id;
     //echo " ";
 
-    echo $counter;
+    //echo $counter;
 
 }
 else {
@@ -188,7 +188,7 @@ else {
     <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
 
 </div>
-// load up more credits
+
 <a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
 <br />
 <br />
@@ -230,8 +230,8 @@ $purchase_cost = $song['purchase_cost'];
 <br />
 <br />
 
-//
-PLAYING SONG  <br />
+
+CLICK PLAY TO PLAY SONG  <br />
 
 
 <!-- play audio file but stop it from being downloadable -->
