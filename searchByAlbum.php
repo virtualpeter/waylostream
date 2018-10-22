@@ -8,7 +8,7 @@ require 'db.php';
 
 
 // get artist id from page call
-$album = $_GET['album'];
+$album = $_GET['id'];
 echo $album;
 
 // search for all songs by artist given

@@ -8,8 +8,8 @@ require 'db.php';
 
 
 // get artist id from page call
-$artist = $_GET['artist'];
-echo $artist;
+$artist = $_GET['id'];
+//echo $artist;
 $exists = $mysqli->query("SELECT id FROM songs WHERE artist='$artist'") or die($mysqli->error);
 //print_r($exists);
 
@@ -38,7 +38,7 @@ foreach($exists as $key){
     $song_name = $song['title'];
 
 
-  echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>Listen to $song_name</a>";
+  echo "<a href='http://www.waylostreams.com/login-system/playSong.php?artist=$name&user=$user_id'>Listen to $song_name</a>";
   print "<br>";
   print "<br>";
 
