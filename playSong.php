@@ -77,7 +77,13 @@ if ($exists2 !== null)
     $result = $mysqli->query("SELECT * FROM users WHERE id='$user_id'");
     $user = $result->fetch_assoc();
     $credits = $user['credits'];
-    $credits--;
+
+    $song_id = $mysqli->escape_string($id);
+    $result = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
+    $song = $result->fetch_assoc();
+    $purchase_cost = $song['purchase_cost'];
+
+    $credits = $credits - $purchase_cost;
     $sql = "UPDATE users SET credits= '$credits' WHERE id ='$user_id'";
     $mysqli->query($sql) or die($mysqli->error);
 
