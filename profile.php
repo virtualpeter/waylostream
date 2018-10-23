@@ -27,6 +27,7 @@ else {
 <head>
   <meta charset="UTF-8">
   <title>WAYLOSTREAM <?= $first_name.' '.$last_name?></title>
+    <?php include 'css/css.html'; ?>
 
 </head>
 
@@ -106,8 +107,12 @@ else {
 
 ?>
 
-  </head>
+
+
+
+  <div class="form">
   <form action="searchResult.php" method="post">
+      <div class="field-wrap">
       <p>Search Artists: <input type="text" name="name" /></p>
 
       <p><input type="submit" /></p>
@@ -119,8 +124,12 @@ else {
 
       <p><input type="submit" /></p>
   </form>
-
-
+  </div>
+  </div>
 
 </body>
+
+
+
+
 </html>
