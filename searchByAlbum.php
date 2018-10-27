@@ -41,7 +41,7 @@ foreach($exists as $key){
 
     echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>  Listen to: $song_name</a>";
     print "<br>";
-    print "<br>";
+    
 
 }
 
