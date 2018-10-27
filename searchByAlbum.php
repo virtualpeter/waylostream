@@ -22,11 +22,9 @@ $a = $mysqli->escape_string($album);
 $reslt = $mysqli->query("SELECT * FROM albums WHERE album_id='$album'") or die($mysqli->error);
 $name = $reslt->fetch_assoc();
 $album_name = $name['album_title'];
-echo "Album name: ";
+echo "Listen to Album: ";
 echo $album_name;
 
-print "<br>";
-print "<br>";
 print "<br>";
 
 // print out links for all the songs found
@@ -41,7 +39,7 @@ foreach($exists as $key){
     $song_name = $song['title'];
 
 
-    echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>  Listen to $song_name</a>";
+    echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>  Listen to: $song_name</a>";
     print "<br>";
     print "<br>";
 

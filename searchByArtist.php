@@ -20,11 +20,9 @@ print "<br>";
   $reslt = $mysqli->query("SELECT * FROM artists WHERE id='$a'") or die($mysqli->error);
   $name = $reslt->fetch_assoc();
   $artist_name = $name['artist_name'];
-  echo "Artist name: ";
+  echo "Songs by artist : ";
   echo $artist_name;
 
-print "<br>";
-  print "<br>";
   print "<br>";
 
 /// print out links for all the songs found by the search
@@ -38,9 +36,9 @@ foreach($exists as $key){
     $song_name = $song['title'];
 
 
-  echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>Listen to $song_name</a>";
+    echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>Listen to: $song_name</a>";
   print "<br>";
-  print "<br>";
+ 
 
   }
 
