@@ -19,12 +19,15 @@ else {
     $user = $result->fetch_assoc();
     $credits = $user['credits'];
 
-//   <?php include 'css/css.html';
+   
     // <p><?= $email
 }
 ?>
 <!DOCTYPE html>
 <html >
+
+
+
 <style>
     body {
         background: #ffffff; /* #c1bdba */
@@ -75,18 +78,21 @@ else {
     }
 
 </style>
+
+
+
+
+
 <head>
   <meta charset="UTF-8">
   <title>WAYLOSTREAM <?= $first_name.' '.$last_name?></title>
 
-
-
 </head>
 
 <body>
-  <div class="form">
 
-          <h1>WAYLOSTREAMS.COM</h1>
+
+          WAYLOSTREAMS.COM
 
       <img src="waylostreams.jpg" alt="WAYLOSTREAMS">
 
@@ -120,16 +126,14 @@ else {
           
           ?>
           
-          <h2><?php echo "Hello ", $first_name.' '.$last_name; ?></h2>
-
+          <?php echo "Hello ", $first_name.' '.$last_name; ?>
           
-          <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
+          href="logout.php"><button class="button button-block" name="logout"/>Log Out</button>
 
-    </div>
 
   <br />
   <br />
-<a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
+href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS
 <br />
 <br />
 
@@ -165,8 +169,7 @@ else {
 
 
   <div class="form">
-      <a>
-  <form action="searchResult.php" method="post">
+    <form action="searchResult.php" method="post">
       <div class="field-wrap">
       <p>Search Artists: <input type="text" name="name" /></p>
 
