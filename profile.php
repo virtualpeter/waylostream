@@ -25,9 +25,7 @@ else {
 ?>
 <!DOCTYPE html>
 <html >
-
-
-
+<!--HTML page formatting -->
 <style>
     body {
         background: #ffffff; /* #c1bdba */
@@ -79,20 +77,18 @@ else {
 
 </style>
 
-
-
-
-
 <head>
   <meta charset="UTF-8">
   <title>WAYLOSTREAM <?= $first_name.' '.$last_name?></title>
 
+
+
 </head>
 
 <body>
+  
 
-
-          WAYLOSTREAMS.COM
+          <h1>WAYLOSTREAMS.COM</h1>
 
       <img src="waylostreams.jpg" alt="WAYLOSTREAMS">
 
@@ -126,14 +122,16 @@ else {
           
           ?>
           
-          <?php echo "Hello ", $first_name.' '.$last_name; ?>
+          <h2><?php echo "Hello ", $first_name.' '.$last_name; ?></h2>
+
           
-          href="logout.php"><button class="button button-block" name="logout"/>Log Out</button>
+          <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
 
+    </div>
 
   <br />
   <br />
-href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS
+<a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
 <br />
 <br />
 
@@ -169,9 +167,10 @@ href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS
 
 
   <div class="form">
-    <form action="searchResult.php" method="post">
+      <a>
+  <form action="searchResult.php" method="post">
       <div class="field-wrap">
-      <p>Search Artists: <input type="text" name="name" /></p>
+      <p>Search Artists:  <input type="text" name="name" /></p>
 
       <p><input type="submit" /></p>
       </div>
@@ -183,6 +182,16 @@ href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS
 
       <p><input type="submit" /></p>
   </form>
+
+          <form action="searchResultSongs.php" method="post">
+              <p>Search Songs:  <input type="text" name="name" /></p>
+
+              <p><input type="submit" /></p>
+          </form>
+
+
+
+
   </div>
 
 

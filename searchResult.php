@@ -6,6 +6,10 @@
   <?php
 
 
+  /// SEARCH ALBUMS BY ARTIST
+
+
+   //// PRINT OUT LIST OF SONGS BY ARTIST AS LINKS
   $artist =$_POST['name'];
   $artist = $mysqli->escape_string($artist);
 
@@ -35,6 +39,11 @@
       print "<br>";
 
   }
+
+
+
+
+
 
   // return to home page link
   ?>

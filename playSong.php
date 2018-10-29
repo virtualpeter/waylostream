@@ -44,7 +44,7 @@ $user_id = $mysqli->escape_string($user);
 //$user_id = 13;
 // get user ID
 // fake purchase cost
-$purchase_cost = 1;
+
 $exists = $mysqli->query("SELECT stream_id FROM streams WHERE user_id='$user_id' AND song_id ='$id'") or die($mysqli->error);
 
 $exists2 = $exists->fetch_assoc();
@@ -104,6 +104,19 @@ if ($exists2 !== null)
 else {
     //echo "stream doesn't exist";
     // create stream in table+
+
+    $result = $mysqli->query("SELECT * FROM users WHERE id='$user_id'");
+    $user = $result->fetch_assoc();
+    $credits = $user['credits'];
+
+    $song_id = $mysqli->escape_string($id);
+    $result = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
+    $song = $result->fetch_assoc();
+    $purchase_cost = $song['purchase_cost'];
+
+    $credits = $credits - $purchase_cost;
+    $sql = "UPDATE users SET credits= '$credits' WHERE id ='$user_id'";
+    $mysqli->query($sql) or die($mysqli->error);
 
     $stream_id = $mysqli->escape_string('1');
 
@@ -288,11 +301,36 @@ CLICK PLAY TO PLAY SONG  <br />
 <br />
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/index.js"></script>
+
+
+
+<?php
+$song_id = $mysqli->escape_string($id);
+$result = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
+$song = $result->fetch_assoc();
+$albumTitle = $song['album'];
+$artistTitle = $song['artist'];
+
+
+
+
+/// links back to artist . album and profile page
+
+
+
+print "<br>";
+echo "<a href='http://www.waylostreams.com/login-system/searchByAlbum.php?id=$albumTitle&user=$user_id'>more songs from this album </a>";
+print "<br>";
+echo "<a href='http://www.waylostreams.com/login-system/searchByArtist.php?id=$artistTitle&user=$user_id'>more songs from this artist </a>";
+print "<br>";
+
+?>
 <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
 
 
-<br
+
 <br />
+</body>
 
 
 
