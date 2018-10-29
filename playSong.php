@@ -63,9 +63,9 @@ if ($exists2 !== null)
     $counter = $counter['number_plays'];
     $counter = $counter + 1;
     $counter = $mysqli->escape_string($counter);
-    echo " number plays is ";
-    echo $counter;
-    echo " ";
+    //echo " number plays is ";
+    //echo $counter;
+   // echo " ";
     $date = date('Y-m-d');
     $date = $mysqli->escape_string($date);
     $sql = "UPDATE streams SET number_plays='$counter' WHERE user_id ='$user_id' AND song_id ='$id'";
@@ -250,8 +250,52 @@ $purchase_cost = $song['purchase_cost'];
 // from the database. It selects the URL of the source and then
 // streams the file secretly
 ?>
-<br />
-<br />
+
+
+<?php
+
+
+$song_id = $mysqli->escape_string($id);
+$result = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
+$song = $result->fetch_assoc();
+$songTitle = $song['title'];
+$albumTitle = $song['album'];
+$artistTitle = $song['artist'];
+
+
+
+echo "Song is: ";
+echo $songTitle;
+echo "<br />";
+
+
+
+// get album title
+$r1 = $mysqli->query("SELECT * FROM albums WHERE album_id='$albumTitle'");
+$song = $r1->fetch_assoc();
+$albumTitle = $song['album_title'];
+
+echo "Album is: ";
+echo $albumTitle;
+echo "<br />";
+
+
+
+$r2 = $mysqli->query("SELECT * FROM artists WHERE id='$artistTitle'");
+$song = $r2->fetch_assoc();
+$artistTitle = $song['artist_name'];
+
+echo "Artist is: ";
+echo $artistTitle;
+echo "<br />";
+
+
+
+
+
+
+?>
+
 
 
 CLICK PLAY TO PLAY SONG  <br />
@@ -277,9 +321,9 @@ CLICK PLAY TO PLAY SONG  <br />
 </script>
 
 -->
-<br />
+
 <span id="response2"></span>
-<br />
+
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/index.js"></script>
 
@@ -302,6 +346,17 @@ CLICK PLAY TO PLAY SONG  <br />
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/index.js"></script>
 
+<?php
+$counter = $mysqli->query("SELECT number_plays FROM streams WHERE user_id='$user_id' AND song_id ='$id'") or die($mysqli->error);
+$counter = $counter->fetch_assoc();
+$counter = $counter['number_plays'];
+$counter = $counter + 1;
+$counter = $mysqli->escape_string($counter);
+echo "You have played this song: ";
+echo $counter;
+echo " times";
+
+?>
 
 
 <?php
