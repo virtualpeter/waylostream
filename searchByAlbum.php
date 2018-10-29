@@ -22,9 +22,18 @@ $a = $mysqli->escape_string($album);
 $reslt = $mysqli->query("SELECT * FROM albums WHERE album_id='$album'") or die($mysqli->error);
 $name = $reslt->fetch_assoc();
 $album_name = $name['album_title'];
+
+
+$coverURL = $name['image_url'];
+
+?>
+<br />
+<img src="<?php echo $coverURL; ?>" />
+<br />
+<?php
+
 echo "Listen to Album: ";
 echo $album_name;
-
 print "<br>";
 
 // print out links for all the songs found

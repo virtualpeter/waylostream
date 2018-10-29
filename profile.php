@@ -70,7 +70,7 @@ else {
     }
 
     img {
-        width: 30%;
+        <img src="waylostreams.jpg" alt="WAYLOSTREAMS">  width: 30%;
         height: 30%;
 
     }
@@ -90,7 +90,7 @@ else {
 
           <h1>WAYLOSTREAMS.COM</h1>
 
-      <img src="waylostreams.jpg" alt="WAYLOSTREAMS">
+
 
 
           

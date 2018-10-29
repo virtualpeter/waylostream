@@ -164,6 +164,57 @@ else {
 ?>
 <!DOCTYPE html>
 <html >
+
+<style>
+    body {
+        background: #ffffff; /* #c1bdba */
+        font-family: 'Titillium Web', sans-serif;
+    }
+
+    input[type=text] {
+        background-color: white;
+        color: black;
+    }
+
+    /* unvisited link */
+    a:link {
+        color: #1ab188;
+    }
+
+    /* visited link */
+    a:visited {
+        color: blue;
+    }
+
+    /* mouse over link */
+    a:hover {
+        color: green;
+    }
+
+    /* selected link */
+    a:active {
+        color: greenyellow;
+    }
+
+
+    button {
+        background-color: #1ab188; /* Green */
+        border: none;
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    img {
+         width: 30%;
+        height: 30%;
+
+    }
+
+</style>
 <head>
     <meta charset="UTF-8">
     <title>WAYLOSTREAM <?= $first_name.' '.$last_name?></title>
@@ -276,11 +327,18 @@ echo "<br />";
 $r1 = $mysqli->query("SELECT * FROM albums WHERE album_id='$albumTitle'");
 $song = $r1->fetch_assoc();
 $albumTitle = $song['album_title'];
+$coverURL = $song['image_url'];
+$albumCredits = $song['credits'];
 
 echo "Album is: ";
 echo $albumTitle;
 echo "<br />";
+?>
+<br />
+<img src="<?php echo $coverURL; ?>" />
+<?php
 
+echo "<br />";
 echo "This song costs: ";
 echo $songCost;
 echo " credits! ";
@@ -376,6 +434,7 @@ $artistTitle = $song['artist'];
 
 
 
+
 echo "<br />";
 
 $query = "SELECT song_id, SUM(number_plays) AS value_sum FROM streams WHERE song_id = '$song_id' GROUP BY song_id";
@@ -402,8 +461,22 @@ print "<br>";
 
 ?>
 <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+<br />
+
+<?php
+
+echo "<br>";
+echo "ALBUM CREDITS:";
+echo "<b>";
+echo "<b>";
 
 
+
+?>
+
+<br />
+
+<?php echo $albumCredits; ?>
 
 <br />
 </body>
