@@ -261,6 +261,8 @@ $song = $result->fetch_assoc();
 $songTitle = $song['title'];
 $albumTitle = $song['album'];
 $artistTitle = $song['artist'];
+$songCost = $song['purchase_cost'];
+
 
 
 
@@ -278,6 +280,12 @@ $albumTitle = $song['album_title'];
 echo "Album is: ";
 echo $albumTitle;
 echo "<br />";
+
+echo "This song costs: ";
+echo $songCost;
+echo " credits! ";
+echo "<br />";
+
 
 
 

@@ -37,11 +37,16 @@ foreach($exists as $key){
     $reslt = $mysqli->query("SELECT * FROM songs WHERE id='$n'") or die($mysqli->error);
     $song = $reslt->fetch_assoc();
     $song_name = $song['title'];
+    $songCost = $song['purchase_cost'];
+
 
 
     echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>  Listen to: $song_name</a>";
+    echo " :song cost ";
+    echo $songCost;
+    echo " credits";
     print "<br>";
-    
+
 
 }
 
