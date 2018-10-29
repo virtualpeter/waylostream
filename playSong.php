@@ -376,6 +376,19 @@ $artistTitle = $song['artist'];
 
 
 
+echo "<br />";
+
+$query = "SELECT song_id, SUM(number_plays) AS value_sum FROM streams WHERE song_id = '$song_id' GROUP BY song_id";
+
+$result = $mysqli->query($query) or die($mysqli->error);
+
+// Print out result
+while($row = mysqli_fetch_array($result)){
+    echo "Total plays for this song to date: ". $row['value_sum'];
+    echo " plays";
+    echo "<br />";
+}
+
 
 /// links back to artist . album and profile page
 
