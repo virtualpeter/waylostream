@@ -16,53 +16,16 @@ $exists = $mysqli->query("SELECT id FROM songs WHERE artist='$artist'") or die($
 
 print "<br>";
 
-$a = $mysqli->escape_string($artist);
+  $a = $mysqli->escape_string($artist);
+  $reslt = $mysqli->query("SELECT * FROM artists WHERE id='$a'") or die($mysqli->error);
+  $name = $reslt->fetch_assoc();
+  $artist_name = $name['artist_name'];
+  echo "Songs by artist : ";
+  echo $artist_name;
 
-
-
-
-print "<br>";
-
-
-$reslt = $mysqli->query("SELECT * FROM artists WHERE id='$a'") or die($mysqli->error);
-$name = $reslt->fetch_assoc();
-$artist_name = $name['artist_name'];
-echo "Albums by artist : ";
-echo $artist_name;
-
-$reslt2 = $mysqli->query("SELECT * FROM albums WHERE album_artist='$a'") or die($mysqli->error);
-$name2 = $reslt2->fetch_assoc();
-$album_name = $name2['album_title'];
-
-
-print "<br>";
+  print "<br>";
 
 /// print out links for all the songs found by the search
-foreach($reslt2 as $key){
-
-    $name =$key["album_id"];
-
-    $n = $mysqli->escape_string($name);
-    $reslt = $mysqli->query("SELECT * FROM albums WHERE album_id='$n'") or die($mysqli->error);
-    $song = $reslt->fetch_assoc();
-    $album_name = $song['album_title'];
-    $title = $song['album_id'];
-
-
-    echo "<a href='http://www.waylostreams.com/login-system/searchByAlbum.php?id=$title&user=$user_id'>Listen to: $album_name</a>";
-    print "<br>";
-
-
-}
-
-/// print out links for all the songs found by the search
-///
-$reslt = $mysqli->query("SELECT * FROM artists WHERE id='$a'") or die($mysqli->error);
-$name = $reslt->fetch_assoc();
-$artist_name = $name['artist_name'];
-echo "Songs by artist : ";
-echo $artist_name;
-print "<br>";
 foreach($exists as $key){
 
     $name =$key["id"];
@@ -71,27 +34,22 @@ foreach($exists as $key){
     $reslt = $mysqli->query("SELECT * FROM songs WHERE id='$n'") or die($mysqli->error);
     $song = $reslt->fetch_assoc();
     $song_name = $song['title'];
+    $songCost = $song['purchase_cost'];
 
 
     echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>Listen to: $song_name</a>";
-    print "<br>";
+    echo " song cost: ";
+    echo $songCost;
+  print "<br>";
 
 
-}
+  }
 
-/// print out albums by artists
-
-print "<br>";
-
-
-
-
-
-
-// return to home page link
+  // return to home page link
 ?>
-<br />
-<a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
-<br />
+  <br />
+  <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+  <br />
+
 
 
