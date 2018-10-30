@@ -14,7 +14,7 @@
   $artist = $mysqli->escape_string($artist);
 
   //echo $artist;
-  $exists = $mysqli->query("SELECT id FROM artists WHERE artist_name LIKE'$artist'") or die($mysqli->error);
+  $exists = $mysqli->query("SELECT id FROM artists WHERE artist_name LIKE'%$artist%'") or die($mysqli->error);
  // print_r($exists);
 
   print "<br>";

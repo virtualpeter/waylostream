@@ -10,7 +10,7 @@ $album =$_POST['name'];
 $album = $mysqli->escape_string($album);
 
 //echo $artist;
-$exists = $mysqli->query("SELECT album_id FROM albums WHERE album_title LIKE'$album'") or die($mysqli->error);
+$exists = $mysqli->query("SELECT album_id FROM albums WHERE album_title LIKE'%$album%'") or die($mysqli->error);
 // print_r($exists);
 
 print "<br>";

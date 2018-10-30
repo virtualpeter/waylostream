@@ -10,7 +10,7 @@ $song =$_POST['name'];
 $song = $mysqli->escape_string($song);
 
 //echo $artist;
-$exists = $mysqli->query("SELECT id FROM songs WHERE title LIKE'$song'") or die($mysqli->error);
+$exists = $mysqli->query("SELECT id FROM songs WHERE title LIKE'%$song%'") or die($mysqli->error);
 // print_r($exists);
 
 print "<br>";
