@@ -133,6 +133,7 @@ else {
   <br />
 <a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
 <br />
+          <a href="http://www.waylostreams.com/login-system/freecredits.php">10 free credits for new users</a>
 <br />
 
 
@@ -185,6 +186,12 @@ else {
 
           <form action="searchResultSongs.php" method="post">
               <p>Search Songs:  <input type="text" name="name" /></p>
+
+              <p><input type="submit" /></p>
+          </form>
+
+          <form action="searchAlbumCredits.php" method="post">
+              <p>Search Album Credits:  <input type="text" name="name" /></p>
 
               <p><input type="submit" /></p>
           </form>
