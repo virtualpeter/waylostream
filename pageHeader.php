@@ -135,7 +135,6 @@ else {
 
 </div>
 
-<a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
 <br />
 <br />
 <br />

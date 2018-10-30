@@ -70,7 +70,7 @@ else {
     }
 
     img {
-        <img src="waylostreams.jpg" alt="WAYLOSTREAMS">  width: 30%;
+        width: 30%;
         height: 30%;
 
     }
@@ -78,24 +78,22 @@ else {
 </style>
 
 <head>
-  <meta charset="UTF-8">
-  <title>WAYLOSTREAM <?= $first_name.' '.$last_name?></title>
 
-
+    WAYLOSTREAMS.COM
+    <br />
 
 </head>
 
 <body>
   
 
-          <h1>WAYLOSTREAMS.COM</h1>
+
+          <img src="waylostreams.jpg" alt="WAYLOSTREAMS">
 
 
 
-
-          
           <p>
-          <?php 
+          <?php
      
           // Display message about account verification link only once
           if ( isset($_SESSION['message']) )
@@ -116,24 +114,37 @@ else {
               echo
               '<div class="info">
               Account is unverified, please confirm your email by clicking
-              on the email link!
+              on the email link! You cannot buy credits or redeem free credits without verifying.
               </div>';
           }
           
           ?>
           
-          <h2><?php echo "Hello ", $first_name.' '.$last_name; ?></h2>
+          <?php echo "Hello ", $first_name.' '.$last_name; ?>
 
-          
+
           <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
 
-    </div>
+          <br />
+          <br />
+          <br />
 
-  <br />
-  <br />
-<a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
+
+          BUY 10000 CREDITS for $10US with PAYPAL
+
+          <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="E9V2SAV7HS668"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+          </form>
+
+
+
+
 <br />
-          <a href="http://www.waylostreams.com/login-system/freecredits.php">10 free credits for new users</a>
+<br />
+
+
+
+          <a href="http://www.waylostreams.com/login-system/freecredits.php">click here to get 10 free credits for new users</a>
 <br />
 
 
