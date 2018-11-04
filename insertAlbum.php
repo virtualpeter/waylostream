@@ -1,5 +1,6 @@
 <?php
 require 'db.php';
+session_start();
 
 /* Database connection settings */
 $host = 'localhost';
@@ -8,6 +9,9 @@ $pass = 'Goberheim1$';
 $db = 'sean';
 $dbport = 3306;
 $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
+
+
+$email = $_SESSION['email'];
 
 // Escape user inputs for security
 
@@ -28,36 +32,68 @@ $name =$exists["id"];
 echo $name;
 */
 
-
+// get artist ID from name
 
 $result = $mysqli->query("SELECT * FROM artists WHERE artist_name='$artist_name'");
 $art = $result->fetch_assoc();
 $name = $art['id'];
 
 
-// Attempt insert query execution
-$sql = "INSERT INTO albums (album_title, album_artist, release_date, image_url, credits)" . " VALUES ('$album_name', '$name', now(), 'http://waylostreams.com/album-covers/step0001.jpg' , '$credits')";
+// check to see if album name exists for that artist
 
-/*
-if(mysqli_query($link, $sql)){
-    echo "Records added successfully.";
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+$exists = $mysqli->query("SELECT * FROM albums WHERE album_artist='$name' AND album_title like '$album_name'") or die($mysqli->error);
+
+
+
+$exists2 = $exists->fetch_assoc();
+$exists2 = $exists2['album_title'];
+
+
+if ($exists2 !== null){ echo "Album Exists already for that artist";
+?>
+<br />
+<a href="http://www.waylostreams.com/login-system/createAlbum.php">Add another album </a>
+<br />
+
+
+<br />
+<a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+<br />
+<?php
 }
+else {
 
 
-$sql = "INSERT INTO streams ( user_id, song_id, purchase_cost, number_plays, first_access_time, last_access_time) "
-    . "VALUES ('$user_id','$id','$purchase_cost', $number_plays, now(), now())";
-*/
+// Attempt insert query execution
+    $sql = "INSERT INTO albums (album_title, album_artist, release_date, image_url, credits, artist_email)" . " VALUES ('$album_name', '$name', now(), 'http://waylostreams.com/album-covers/step0001.jpg' , '$credits', '$email')";
 
-$mysqli->query($sql) or die($mysqli->error);
+    /*
+    if(mysqli_query($link, $sql)){
+        echo "Records added successfully.";
+    } else{
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+    }
 
-echo "Album Added";
+
+    $sql = "INSERT INTO streams ( user_id, song_id, purchase_cost, number_plays, first_access_time, last_access_time) "
+        . "VALUES ('$user_id','$id','$purchase_cost', $number_plays, now(), now())";
+    */
+
+    $mysqli->query($sql) or die($mysqli->error);
+
+    echo "Album Added";
 
 // Close connection
-mysqli_close($link);
+    mysqli_close($link);
 
+}
+
+if ($exists2 !== null){}
+
+else {
 ?>
+
+
 
 <br />
 <a href="http://www.waylostreams.com/login-system/createAlbum.php">Add another album </a>
@@ -67,5 +103,6 @@ mysqli_close($link);
 <br />
 <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
 <br />
-
+<?php
+}
 
