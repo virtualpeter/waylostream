@@ -93,16 +93,12 @@ if ($exists2 !== null){}
 else {
 ?>
 
+    <form action="albumImageUpload.php?name=<?php echo $album_name ;?>" method="post" enctype="multipart/form-data">
+        Now select image to upload for album:
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="upload" name="submit">
+    </form>
 
-
-<br />
-<a href="http://www.waylostreams.com/login-system/createAlbum.php">Add another album </a>
-<br />
-
-
-<br />
-<a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
-<br />
 <?php
 }
 
