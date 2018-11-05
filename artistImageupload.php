@@ -15,7 +15,7 @@ $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
 
 
 
-$albumName = $_GET['name'];
+$artistName = $_GET['name'];
 $target_dir = "albumCovers/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -59,13 +59,13 @@ if ($uploadOk == 0) {
 
 
 
-        $sql = "UPDATE albums SET image_url = '$url3' WHERE album_title = '$albumName'";
+        $sql = "UPDATE artists SET image_url = '$url3' WHERE artist_name = '$artistName'";
         $mysqli->query($sql) or die($mysqli->error);
 
         ?>
 
         <br />
-        <a href="http://www.waylostreams.com/login-system/createAlbum.php">Add another album </a>
+        <a href="http://www.waylostreams.com/login-system/createArtist.php">Add another album </a>
         <br />
 
 

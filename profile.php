@@ -214,6 +214,14 @@ else {
   </div>
 
 
+          <br />
+
+
+
+          <a href="http://www.waylostreams.com/login-system/artistArea.php">artists click here to upload music </a>
+          <br />
+
+
 
 </body>
 

@@ -16,12 +16,20 @@ $email = $_SESSION['email'];
 // Escape user inputs for security
 
 
-$album_name =$_POST['album_name'];
-$album_name = $mysqli->escape_string($album_name);
 $artist_name =$_POST['artist_name'];
 $artist_name = $mysqli->escape_string($artist_name);
-$credits =$_POST['credits'];
-$credits = $mysqli->escape_string($credits);
+
+$artist_sex =$_POST['artist_sex'];
+$artist_sex = $mysqli->escape_string($artist_sex);
+$artist_country =$_POST['artist_country'];
+$artist_country = $mysqli->escape_string($artist_country);
+$artist_bio =$_POST['artist_bio'];
+$artist_bio = $mysqli->escape_string($artist_bio);
+
+$artist_location =$_POST['artist_location'];
+$artist_location = $mysqli->escape_string($artist_location);
+$artist_birthday = $_POST['artist_birthday'];
+$artist_birthday = $mysqli->escape_string($artist_birthday);
 
 
 // search for artist name index
@@ -34,25 +42,27 @@ echo $name;
 
 // get artist ID from name
 
+/*
 $result = $mysqli->query("SELECT * FROM artists WHERE artist_name='$artist_name'");
 $art = $result->fetch_assoc();
 $name = $art['id'];
 
+*/
 
 // check to see if album name exists for that artist
 
-$exists = $mysqli->query("SELECT * FROM albums WHERE album_artist='$name' AND album_title like '$album_name'") or die($mysqli->error);
+$exists = $mysqli->query("SELECT * FROM artists WHERE artist_name='$artist_name'")or die($mysqli->error);
 
 
 
 $exists2 = $exists->fetch_assoc();
-$exists2 = $exists2['album_title'];
+$exists2 = $exists2['artist_name'];
 
 
-if ($exists2 !== null){ echo "Album Exists already for that artist";
+if ($exists2 !== null){ echo "Artists Exists already for that artist";
     ?>
     <br />
-    <a href="http://www.waylostreams.com/login-system/createAlbum.php">Add another album </a>
+    <a href="http://www.waylostreams.com/login-system/createArtist.php">Add another artist </a>
     <br />
 
 
@@ -65,7 +75,7 @@ else {
 
 
 // Attempt insert query execution
-    $sql = "INSERT INTO albums (album_title, album_artist, release_date, image_url, credits, artist_email)" . " VALUES ('$album_name', '$name', now(), 'http://waylostreams.com/album-covers/step0001.jpg' , '$credits', '$email')";
+    $sql = "INSERT INTO artists (artist_name, birthdate, email, sex, birth_country, location_city, image_url, artist_bio)" . " VALUES ('$artist_name', STR_TO_DATE('$artist_birthday','%m-%d-%y'), '$email', '$artist_sex', '$artist_country', '$artist_location', 'http://waylostreams.com/album-covers/step0001.jpg' , '$artist_bio')";
 
     /*
     if(mysqli_query($link, $sql)){
@@ -81,7 +91,7 @@ else {
 
     $mysqli->query($sql) or die($mysqli->error);
 
-    echo "Album Added";
+    echo "Artist Added";
 
 // Close connection
     mysqli_close($link);
@@ -93,8 +103,8 @@ if ($exists2 !== null){}
 else {
     ?>
 
-    <form action="albumImageUpload.php?name=<?php echo $album_name ;?>" method="post" enctype="multipart/form-data">
-        Now select image to upload for album:
+    <form action="artistImageUpload.php?name=<?php echo $artist_name ;?>" method="post" enctype="multipart/form-data">
+        Now select image to upload for artist:
         <input type="file" name="fileToUpload" id="fileToUpload">
         <input type="submit" value="upload" name="submit">
     </form>

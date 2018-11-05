@@ -32,23 +32,18 @@ session_start();
     </p>
 
 
-
     <p>
         <label for="artistBio">Artist Bio:</label>
         <input type="text" name="artist_bio" id="credits">
     </p>
-
 
     <p>
         <label for="artistBirthday">Artist Birthday:</label>
         <input type="date" name="bday">
     </p>
 
-
-
     <input type="submit" value="Submit">
 </form>
-
 
 </body>
 </html>
