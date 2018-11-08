@@ -102,7 +102,7 @@ if ($exists2 !== null){}
 else {
     ?>
 
-    <form action="songMp3Upload.php?title=<?php echo $title ;?>&album=<?php echo $album_name ;?>" method="post" enctype="multipart/form-data">
+    <form action="songMp3Upload.php?title=<?php echo $title ;?>&album=<?php echo $album ;?>" method="post" enctype="multipart/form-data">
         Now select file(mp3/wav) to upload for song:
         <input type="file" name="fileToUpload" id="fileToUpload">
         <input type="submit" value="upload" name="submit">

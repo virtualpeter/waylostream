@@ -28,7 +28,9 @@ THEN ADD SONGS TO THE ALBUM
 <br />
 <a href="http://www.waylostreams.com/login-system/createAlbum.php">Add another album </a>
 <br />
-
+<br />
+<a href="http://www.waylostreams.com/login-system/addSong.php">Add a song to an album </a>
+<br />
 
 <br />
 <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
