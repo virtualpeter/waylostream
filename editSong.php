@@ -38,24 +38,23 @@ $row = mysqli_fetch_assoc($result);
         $id=$_REQUEST['id'];
 
         $purchase_cost =$_REQUEST['purchase_cost'];
-        $purchase_cost = mysqli_escape_string($purchase_cost);
+        //$purchase_cost = mysqli_escape_string($purchase_cost);
         $pCost = intval($purchase_cost);
-       //
+        //
         //echo $purchase_cost;
         $stream_cost =$_REQUEST['stream_cost'];
-        $stream_cost = mysqli_escape_string($stream_cost);
+        //$stream_cost = mysqli_escape_string($stream_cost);
         $sCost = intval($stream_cost);
         //
         //echo $stream_cost;
 
-       // $update="update songs set purchase_cost= 2 , stream_cost = 3 where title='$id'";
+        // $update="update songs set purchase_cost= 2 , stream_cost = 3 where title='$id'";
         $update="update songs set purchase_cost= $pCost , stream_cost= $sCost  where title = '$id'";
         $mysqli->query($update) or die($mysqli->error);
         $status = "Record Updated Successfully. </br></br>
-<a href='view.php'>View Updated Record</a>";
+<a href='viewSongData.php'>View Updated Records</a>";
         echo '<p style="color:#FF0000;">'.$status.'</p>';
-            echo $purchase_cost;
-        echo $stream_cost;
+
     }else {
     ?>
     <div>
