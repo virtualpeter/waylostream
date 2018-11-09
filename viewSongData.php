@@ -50,10 +50,10 @@ $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
                 <td align="center"><?php echo $row["stream_cost"]; ?></td>
                 <td align="center"><?php echo $row["purchase_cost"]; ?></td>
                 <td align="center">
-                    <a href="edit.php?id=<?php echo $row["title"]; ?>">Edit</a>
+                    <a href="editSong.php?id=<?php echo $row["title"]; ?>">Edit</a>
                 </td>
                 <td align="center">
-                    <a href="delete.php?id=<?php echo $row["title"]; ?>">Delete</a>
+                    <a href="deleteSong.php?id=<?php echo $row["title"]; ?>">Delete</a>
                 </td>
             </tr>
             <?php $count++; } ?>
