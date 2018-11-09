@@ -61,8 +61,12 @@ $row = mysqli_fetch_assoc($result);
         <form name="form" method="post" action="">
             <input type="hidden" name="new" value="1" />
             <input name="id" type="hidden" value="<?php echo $row['title'];?>" />
+            Change purchase cost
+            <br>
             <p><input type="text" name="purchase_cost" placeholder="Enter Purchase Cost"
                       required value="<?php echo $row['purchase_cost'];?>" /></p>
+            Change stream cost
+            <br>
             <p><input type="text" name="stream_cost" placeholder="Enter Stream Cost"
                       required value="<?php echo $row['stream_cost'];?>" /></p>
             <p><input name="submit" type="submit" value="Update" /></p>
