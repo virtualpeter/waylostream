@@ -23,8 +23,17 @@ THEN CREATE AN ALBUM
 <br />
 THEN ADD SONGS TO THE ALBUM
 <br />
+<a href="http://www.waylostreams.com/login-system/viewAlbumData.php">View/edit/Delete Your Albums </a>
+<br />
+<br />
+
+<a href="http://www.waylostreams.com/login-system/viewSongData.php">View/edit/Delete Your Songs </a>
+<br />
+<br />
+
 <a href="http://www.waylostreams.com/login-system/createArtist.php">Add another artist </a>
 <br />
+
 <br />
 <a href="http://www.waylostreams.com/login-system/createAlbum.php">Add another album </a>
 <br />

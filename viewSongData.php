@@ -60,5 +60,8 @@ $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
         </tbody>
     </table>
 </div>
+
+<br />
+<a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
 </body>
 </html>
