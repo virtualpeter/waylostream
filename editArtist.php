@@ -46,7 +46,7 @@ $row = mysqli_fetch_assoc($result);
     {
         $id=$_REQUEST['id'];
 
-        $album_artist =$_REQUEST['album_artist'];
+        $artist_name =$_REQUEST['artist_name'];
         $result = $mysqli->query("select * from artists where id = '$id'") or die($mysqli->error);
 
         $row = mysqli_fetch_assoc($result);
