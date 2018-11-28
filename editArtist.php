@@ -46,18 +46,13 @@ $row = mysqli_fetch_assoc($result);
     {
         $id=$_REQUEST['id'];
 
-        $artist_name =$_REQUEST['artist_name'];
-        $result = $mysqli->query("select * from artists where id = '$id'") or die($mysqli->error);
 
-        $row = mysqli_fetch_assoc($result);
-        $id = $row['id'];
-        $sex = $row['sex'];
-        $birth_country = $row['birth_country'];
-        $location_city = $row['location_city'];
-        $artist_bio = $row['artist_bio'];
+        $sex =$_REQUEST['sex'];
+        $birth_country =$_REQUEST['birthCountry'];
+        $artist_bio =$_REQUEST['artistBio'];
+        $location_city =$_REQUEST['locationCity'];
 
-
-
+        
 
 
         // $update="update songs set purchase_cost= 2 , stream_cost = 3 where title='$id'";
