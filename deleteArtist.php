@@ -16,7 +16,7 @@ $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
 
 
 $id=$_REQUEST['id'];
-$query = "DELETE FROM artists WHERE artist_name= '$id' and email='$email'";
+$query = "DELETE FROM artists WHERE id= '$id' and email='$email'";
 $mysqli->query($query) or die($mysqli->error);
 header("Location: viewArtistData.php");
 ?>
