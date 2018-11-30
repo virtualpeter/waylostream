@@ -63,6 +63,10 @@ if ($exists2 !== null)
     $counter = $counter['number_plays'];
     $counter = $counter + 1;
     $counter = $mysqli->escape_string($counter);
+
+    $unpaid = $counter['unpaid_plays'];
+    $unpaid = $unpaid + 1;
+    $unpaid = $mysqli->escape_string($unpaid);
     //echo " number plays is ";
     //echo $counter;
    // echo " ";
@@ -71,6 +75,11 @@ if ($exists2 !== null)
     $sql = "UPDATE streams SET number_plays='$counter' WHERE user_id ='$user_id' AND song_id ='$id'";
 
     $mysqli->query($sql) or die($mysqli->error);
+
+    $sql = "UPDATE streams SET unpaid_plays='$unpaid' WHERE user_id ='$user_id' AND song_id ='$id'";
+
+    $mysqli->query($sql) or die($mysqli->error);
+
     $sql = "UPDATE streams SET last_access_time= '$date' WHERE user_id ='$user_id' AND song_id ='$id'";
     $mysqli->query($sql) or die($mysqli->error);
 
@@ -109,6 +118,7 @@ else {
     $user = $result->fetch_assoc();
     $credits = $user['credits'];
 
+
     $song_id = $mysqli->escape_string($id);
     $result = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
     $song = $result->fetch_assoc();
@@ -124,9 +134,12 @@ else {
     $purchase_cost = $mysqli->escape_string($purchase_cost);
     $number_plays = 1;
     $number_plays = $mysqli->escape_string($number_plays);
+    $unpaid = 1;
+    $unpaid = $mysqli->escape_string($unpaid);
+
     // insert new stream into streams table fisrt time a song is played by a user
-    $sql = "INSERT INTO streams ( user_id, song_id, purchase_cost, number_plays, first_access_time, last_access_time) "
-        . "VALUES ('$user_id','$id','$purchase_cost', $number_plays, now(), now())";
+    $sql = "INSERT INTO streams ( user_id, song_id, purchase_cost, number_plays, unpaid_plays, first_access_time, last_access_time) "
+        . "VALUES ('$user_id','$id','$purchase_cost', '$number_plays', '$unpaid', now(), now())";
 
     $mysqli->query($sql) or die($mysqli->error);
     //echo $counter;

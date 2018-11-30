@@ -1,23 +1,7 @@
 
 
 <?php
-// this file updates the streams table in the database
-// the user and song_id are passed in with say streamsong.php?id=1&user=13
-// it checks to see if the user has already played the song if so it increments the counter
-// if the user has never played the song it creates a new row in the DB linking the song to the user
-// connection settings
-//require '../login-system/db.php';
-//session_start();
-// do these need to be global  ?
-/*
-global $id;
-global $sql;
-global $mysqli;
-global $result;
-global $row;
-global $filename;
 
- */
 /* Database connection settings */
 $host = 'localhost';
 $user = 'seanwayland';
@@ -39,10 +23,8 @@ $user_id = $mysqli->escape_string($user);
 
 
 
-// sean's user ID !!!
-//$user_id = 13;
-// get user ID
-// fake purchase cost
+// get purchase cost
+
 $purchase_cost = 1;
 $exists = $mysqli->query("SELECT stream_id FROM streams WHERE user_id='$user_id' AND song_id ='$id'") or die($mysqli->error);
 
@@ -60,8 +42,11 @@ if ($exists2 !== null)
     $counter = $mysqli->query("SELECT number_plays FROM streams WHERE user_id='$user_id' AND song_id ='$id'") or die($mysqli->error);
     $counter = $counter->fetch_assoc();
     $counter = $counter['number_plays'];
-    $counter = $counter + 1;
+    $unpaid = $counter['unpaid_plays'];
+
     $counter = $mysqli->escape_string($counter);
+
+    $unpaid = $mysqli->escape_string($unpaid);
     echo " number plays is ";
     echo $counter;
     echo " ";
@@ -70,13 +55,18 @@ if ($exists2 !== null)
     $sql = "UPDATE streams SET number_plays='$counter' WHERE user_id ='$user_id' AND song_id ='$id'";
 
     $mysqli->query($sql) or die($mysqli->error);
+
+
+    $sql = "UPDATE streams SET unpaid_plays='$unpaid' WHERE user_id ='$user_id' AND song_id ='$id'";
+
+    $mysqli->query($sql) or die($mysqli->error);
     $sql = "UPDATE streams SET last_access_time= '$date' WHERE user_id ='$user_id' AND song_id ='$id'";
     $mysqli->query($sql) or die($mysqli->error);
 
     $result = $mysqli->query("SELECT * FROM users WHERE id='$user_id'");
     $user = $result->fetch_assoc();
     $credits = $user['credits'];
-    $credits--;
+
     $sql = "UPDATE users SET credits= '$credits' WHERE id ='$user_id'";
     $mysqli->query($sql) or die($mysqli->error);
 
@@ -100,9 +90,10 @@ else {
     $purchase_cost = $mysqli->escape_string($purchase_cost);
     $number_plays = 1;
     $number_plays = $mysqli->escape_string($number_plays);
+    $unpaid = 1;
     // insert new stream into streams table fisrt time a song is played by a user
-    $sql = "INSERT INTO streams ( user_id, song_id, purchase_cost, number_plays, first_access_time, last_access_time) "
-        . "VALUES ('$user_id','$id','$purchase_cost', $number_plays, now(), now())";
+    $sql = "INSERT INTO streams ( user_id, song_id, purchase_cost, number_plays, unpaid_plays, first_access_time, last_access_time) "
+        . "VALUES ('$user_id','$id','$purchase_cost', $number_plays, $unpaid, now(), now())";
 
     $mysqli->query($sql) or die($mysqli->error);
     //echo $counter;
