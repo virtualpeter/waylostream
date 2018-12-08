@@ -69,7 +69,7 @@ if ($exists2 !== null)
     $unpaid = $mysqli->escape_string($unpaid);
     //echo " number plays is ";
     //echo $counter;
-   // echo " ";
+    // echo " ";
     $date = date('Y-m-d');
     $date = $mysqli->escape_string($date);
     $sql = "UPDATE streams SET number_plays='$counter' WHERE user_id ='$user_id' AND song_id ='$id'";
@@ -179,7 +179,7 @@ else {
 
 <style>
     body {
-        background: #ffffff; /* #c1bdba */
+        background: #D3D3D3D3; /* #c1bdba */
         font-family: 'Titillium Web', sans-serif;
     }
 
@@ -221,7 +221,7 @@ else {
     }
 
     img {
-         width: 30%;
+        width: 30%;
         height: 30%;
 
     }
@@ -451,6 +451,5 @@ echo "<b>";
 
 <br />
 </body>
-
 
 
