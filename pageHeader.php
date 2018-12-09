@@ -32,67 +32,79 @@ else {
 
 }
 ?>
-<!DOCTYPE html>
-<html >
-<style>
-    body {
-        background: #ffffff; /* #c1bdba */
-        font-family: 'Titillium Web', sans-serif;
-    }
+    <!DOCTYPE html>
+    <html >
+    <style>
+        body {
+            background: #D3D3D3D3; /* #c1bdba */
 
-    input[type=text] {
-        background-color: white;
-        color: black;
-    }
-
-    a:link {
-        color: #1ab188;
-    }
-
-    /* visited link */
-    a:visited {
-        color: blue;
-    }
-
-    /* mouse over link */
-    a:hover {
-        color: green;
-    }
-
-    /* selected link */
-    a:active {
-        color: greenyellow;
-    }
+            font-family: 'Titillium Web', sans-serif;
+        }
 
 
-    button {
-        background-color: #1ab188; /* Green */
-        border: none;
-        color: black;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-    }
+        /* The navigation bar */
+        .navbar {
+            position: fixed; /* Set the navbar to fixed position */
+            top: 0px;
+            left: 600px;
+            width: 100%; /* Full width */
+        }
 
-    img {
-        width: 30%;
-        height: 30%;
+        input[type=text] {
+            background-color: white;
+            color: black;
+        }
 
-    }
+        a:link {
+            color: #1ab188;
+        }
 
-</style>
-<head>
-    <meta charset="UTF-8">
-    <title>WAYLOSTREAMS.COM <?= $first_name.' '.$last_name?></title>
+        /* visited link */
+        a:visited {
+            color: blue;
+        }
 
-</head>
+        /* mouse over link */
+        a:hover {
+            color: green;
+        }
+
+        /* selected link */
+        a:active {
+            color: greenyellow;
+        }
+
+
+        button {
+            background-color: #1ab188; /* Green */
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        img {
+            width: 30%;
+            height: 30%;
+
+        }
+
+    </style>
+    <head>
+        <meta charset="UTF-8">
+        <title>WAYLOSTREAMS.COM <?= $first_name.' '.$last_name?></title>
+
+    </head>
 
 <body>
 <div class="form">
 
-    <h1>WAYLOSTREAMS.COM</h1>
+
+
+    <br>
 
     <img src="waylostreams.jpg" alt="WAYLOSTREAMS">
 
@@ -131,7 +143,21 @@ else {
     <h2><?php echo "Hello ", $first_name.' '.$last_name; ?></h2>
     <p><?= $email ?></p>
 
+
+    <div class="navbar">
+
+        <br />
+        WWW.WAYLOSTREAMS.COM
+        <br />
+
     <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
+
+        <br />
+        <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+        <br />
+
+
+    </div>
 
 </div>
 
@@ -140,11 +166,12 @@ else {
 <br />
 
 <?php
-
+/*
 echo "You have: ";
 echo $credits;
 echo " credits";
 echo "<br>";
+*/
 $song_id = 1;
 
 // fetch the logged in users email
