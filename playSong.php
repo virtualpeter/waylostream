@@ -38,6 +38,12 @@ $user = $_GET['user'];
 $id = $mysqli->escape_string($id);
 $user_id = $mysqli->escape_string($user);
 
+$song_id = $mysqli->escape_string($id);
+$result1 = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
+$song = $result->fetch_assoc();
+$purchase_cost = $song['purchase_cost'];
+
+
 //////////           UPDATE STREAMS AND CREDITS FROM DATABASE
 
 // sean's user ID !!!
@@ -45,7 +51,7 @@ $user_id = $mysqli->escape_string($user);
 // get user ID
 // fake purchase cost
 
-$exists = $mysqli->query("SELECT stream_id FROM streams WHERE user_id='$user_id' AND song_id ='$id'") or die($mysqli->error);
+$exists = $mysqli->query("SELECT stream_id FROM streams WHERE user_id='$user_id' AND song_id ='$id' AND purchase_cost = '$purchase_cost'") or die($mysqli->error);
 
 $exists2 = $exists->fetch_assoc();
 $streamid = $exists2['stream_id'];
@@ -451,5 +457,4 @@ echo "<b>";
 
 <br />
 </body>
-
 
