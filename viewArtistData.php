@@ -12,6 +12,7 @@ sex
 
 session_start();
 $email = $_SESSION['email'];
+$email = $mysqli->real_escape_string($email);
 
 /* Database connection settings */
 $host = 'localhost';
@@ -47,27 +48,18 @@ $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
         </thead>
         <tbody>
         <?php
+        $email = $_SESSION['email'];
+        $email = $mysqli->real_escape_string($email);
         $count=1;
 
         $result = $mysqli->query("SELECT * FROM artists WHERE email='$email'") or die($mysqli->error);
-        $row = mysqli_fetch_assoc($result);
-
-        //$artist = $row['artist'];
-
-
-
-
-
+        //$row = mysqli_fetch_assoc($result);
 
 
 
 
         while($row = mysqli_fetch_assoc($result)) {
 
-            $artist = $row['album_artist'];
-            $result2 = $mysqli->query("select * from artists where id = '$artist'") or die($mysqli->error);
-
-            $row2 = mysqli_fetch_assoc($result2);
 
 
             ?>

@@ -33,7 +33,7 @@ $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
 <body>
 <div class="form">
 
-    <h2>Your Songs</h2>
+    <h2>Your Albums</h2>
     <table width="100%" border="1" style="border-collapse:collapse;">
         <thead>
         <tr>
@@ -51,7 +51,7 @@ $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
         $count=1;
 
         $result = $mysqli->query("SELECT * FROM albums WHERE artist_email='$email'") or die($mysqli->error);
-        $row = mysqli_fetch_assoc($result);
+        //$row = mysqli_fetch_assoc($result);
 
         //$artist = $row['artist'];
 
