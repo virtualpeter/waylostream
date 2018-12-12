@@ -46,17 +46,18 @@ $row = mysqli_fetch_assoc($result);
     {
         $id=$_REQUEST['id'];
 
-
+        $artist_name =$_REQUEST['artistName'];
         $sex =$_REQUEST['sex'];
         $birth_country =$_REQUEST['birthCountry'];
         $artist_bio =$_REQUEST['artistBio'];
         $location_city =$_REQUEST['locationCity'];
 
-        
+
+
 
 
         // $update="update songs set purchase_cost= 2 , stream_cost = 3 where title='$id'";
-        $update="update artists set sex= '$sex' , birth_country= '$birth_country' , location_city = '$location_city', artist_bio = '$artist_bio' where id = '$id'";
+        $update="update artists set artist_name = '$artist_name ', sex= '$sex' , birth_country= '$birth_country' , location_city = '$location_city', artist_bio = '$artist_bio' where id = '$id'";
         $mysqli->query($update) or die($mysqli->error);
         $status = "Record Updated Successfully. </br></br>
 <a href='viewArtistData.php'>View Updated Records</a>";
@@ -68,6 +69,10 @@ $row = mysqli_fetch_assoc($result);
         <form name="form" method="post" action="">
             <input type="hidden" name="new" value="1" />
             <input name="id" type="hidden" value="<?php echo $row['id'];?>" />
+            Change Artist Name
+            <br>
+            <p><input type="text" name="artistName" placeholder="Enter Artist name"
+                      required value="<?php echo $row['artist_name'];?>" /></p>
             Change Artist Sex
             <br>
             <p><input type="text" name="sex" placeholder="Enter Artist sex"
