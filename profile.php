@@ -223,7 +223,7 @@ $purchase_cost = $song['purchase_cost'];
 
 
 
-<a href="http://www.waylostreams.com/login-system/artistArea.php">artists click here to upload music </a>
+<a href="http://www.waylostreams.com/login-system/artistArea.php">artists area / upload music </a>
 <br />
 
 

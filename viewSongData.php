@@ -63,5 +63,11 @@ $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
 
 <br />
 <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+<br />
+
+
+
+<a href="http://www.waylostreams.com/login-system/artistArea.php">artists area / upload music </a>
+<br />
 </body>
 </html>
