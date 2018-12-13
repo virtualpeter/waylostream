@@ -55,6 +55,10 @@ else {
             color: black;
         }
 
+       a{
+       text-decoration: none;
+        }
+
         a:link {
             color: #1ab188;
         }

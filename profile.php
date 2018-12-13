@@ -44,6 +44,10 @@ else {
         color: black;
     }
 
+    a{
+    text-decoration: none;
+    }
+
     /* unvisited link */
     a:link {
         color: #1ab188;
@@ -131,8 +135,7 @@ if ( !$active ){
 
 
 
-<br />
-<br />
+
 <br />
 
 
@@ -146,7 +149,7 @@ BUY 10,000 CREDITS for US $10 with PAYPAL
 
 
 
-<br />
+
 <br />
 
 
