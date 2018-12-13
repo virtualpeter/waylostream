@@ -34,8 +34,8 @@ if ($_FILES["fileToUpload"]["size"] > 50000000) {
     $uploadOk = 0;
 }
 // Allow certain file formats
-if($imageFileType != "mp3" && $imageFileType != "wav") {
-    echo "Sorry, only mp3 and wav files are allowed.";
+if($imageFileType != "mp3") {
+    echo "Sorry, only mp3 files are allowed.";
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
@@ -63,7 +63,7 @@ if ($uploadOk == 0) {
         ?>
 
         <br />
-        <a href="http://www.waylostreams.com/login-system/createSong.php">Add another song </a>
+        <a href="http://www.waylostreams.com/login-system/artistArea.php">back to artists area / upload music </a>
         <br />
 
 
