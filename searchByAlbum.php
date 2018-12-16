@@ -46,7 +46,7 @@ foreach($exists as $key){
     $reslt = $mysqli->query("SELECT * FROM songs WHERE id='$n'") or die($mysqli->error);
     $song = $reslt->fetch_assoc();
     $song_name = $song['title'];
-    $songCost = $song['purchase_cost'];
+    $songCost = $song['stream_cost'];
 
 
 
@@ -64,6 +64,5 @@ foreach($exists as $key){
 <br />
 <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
 <br />
-
 
 
