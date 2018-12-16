@@ -55,8 +55,8 @@ else {
             color: black;
         }
 
-       a{
-       text-decoration: none;
+        a{
+            text-decoration: none;
         }
 
         a:link {
@@ -153,12 +153,22 @@ else {
         <br />
         WWW.WAYLOSTREAMS.COM
         <br />
+        <br />
+        A FAIR SITE FOR MUSOS!
+        <br />
+        <br />
 
-    <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
+
+        <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
 
         <br />
         <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
         <br />
+
+
+
+
+
 
 
     </div>
