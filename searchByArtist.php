@@ -62,6 +62,8 @@ foreach($reslt2 as $key){
 
 }
 
+print "<br>";
+
 /// print out links for all the songs found by the search
 ///
 $reslt = $mysqli->query("SELECT * FROM artists WHERE id='$a'") or die($mysqli->error);
@@ -69,6 +71,7 @@ $name = $reslt->fetch_assoc();
 $artist_name = $name['artist_name'];
 echo "Songs by artist : ";
 echo $artist_name;
+print "<br>";
 print "<br>";
 foreach($exists as $key){
 
@@ -78,7 +81,7 @@ foreach($exists as $key){
     $reslt = $mysqli->query("SELECT * FROM songs WHERE id='$n'") or die($mysqli->error);
     $song = $reslt->fetch_assoc();
     $song_name = $song['title'];
-    $songCost = $song['purchase_cost'];
+    $songCost = $song['stream_cost'];
 
 
     echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>Listen to: $song_name</a>";
@@ -104,5 +107,4 @@ print "<br>";
 <br />
 <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
 <br />
-
 
