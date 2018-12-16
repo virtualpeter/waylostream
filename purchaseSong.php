@@ -11,7 +11,12 @@
 //session_start();
 // do these need to be global  ?
 /*
-
+global $id;
+global $sql;
+global $mysqli;
+global $result;
+global $row;
+global $filename;
 
  */
 /* Database connection settings */
@@ -25,26 +30,34 @@ $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
 // get song id from page call
 $id = $_GET['id'];
 $user = $_GET['user'];
-
+//echo "ID is ";
+//echo $id;
+//echo "  user is ";
+//echo $user;
+//echo " ";
 $id = $mysqli->escape_string($id);
 $user_id = $mysqli->escape_string($user);
 
 $song_id = $mysqli->escape_string($id);
 $result1 = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
 $song = $result->fetch_assoc();
-$purchase_cost = $song['stream_cost'];
-$buy_cost = $song['purchase_cost'];
+$purchase_cost = $song['purchase_cost'];
 
 
 //////////           UPDATE STREAMS AND CREDITS FROM DATABASE
 
-
+// sean's user ID !!!
+//$user_id = 13;
+// get user ID
+// fake purchase cost
 
 $exists = $mysqli->query("SELECT stream_id FROM streams WHERE user_id='$user_id' AND song_id ='$id' AND purchase_cost = '$purchase_cost'") or die($mysqli->error);
 
 $exists2 = $exists->fetch_assoc();
 $streamid = $exists2['stream_id'];
-
+//echo " stream id is ";
+//echo $streamid;
+//echo " ";
 if ($exists2 !== null)
 {
     // if song has been played before by user do nothing for now
@@ -83,7 +96,7 @@ if ($exists2 !== null)
     $song_id = $mysqli->escape_string($id);
     $result = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
     $song = $result->fetch_assoc();
-    $purchase_cost = $song['stream_cost'];
+    $purchase_cost = $song['purchase_cost'];
 
     $credits = $credits - $purchase_cost;
     $sql = "UPDATE users SET credits= '$credits' WHERE id ='$user_id'";
@@ -114,7 +127,7 @@ else {
     $song_id = $mysqli->escape_string($id);
     $result = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
     $song = $result->fetch_assoc();
-    $purchase_cost = $song['stream_cost'];
+    $purchase_cost = $song['purchase_cost'];
 
     $credits = $credits - $purchase_cost;
     $sql = "UPDATE users SET credits= '$credits' WHERE id ='$user_id'";
@@ -227,16 +240,9 @@ else {
 <body>
 
 
-<a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
-<br />
-<br />
-<br />
 
 <?php
-echo "You have: ";
-echo $credits;
-echo " credits";
-echo "<br>";
+
 $id = $_GET['id'];
 $user = $_GET['user'];
 //echo "ID is ";
@@ -259,7 +265,7 @@ $user_id = $user['id'];
 $song_id = $mysqli->escape_string($song_id);
 $result = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
 $song = $result->fetch_assoc();
-$purchase_cost = $song['stream_cost'];
+$purchase_cost = $song['purchase_cost'];
 
 // this code below a sticks up an html audio player and calls the source file
 // from the database. It selects the URL of the source and then
@@ -276,15 +282,13 @@ $song = $result->fetch_assoc();
 $songTitle = $song['title'];
 $albumTitle = $song['album'];
 $artistTitle = $song['artist'];
-$songCost = $song['stream_cost'];
-$buyCost = $song['purchase_cost'];
+$songCost = $song['purchase_cost'];
+$url = $song['URL'];
+//$url = '"'.$url.'"';
 
 
 
 
-echo "Song is: ";
-echo $songTitle;
-echo "<br />";
 
 
 
@@ -295,26 +299,22 @@ $albumTitle = $song['album_title'];
 $coverURL = $song['image_url'];
 $albumCredits = $song['credits'];
 
-echo "Album is: ";
-echo $albumTitle;
-echo "<br />";
+
+
 ?>
-<br />
-<img src="<?php echo $coverURL; ?>" />
+
+
 <?php
 
-echo "<br />";
-echo "This song is: ";
-echo "$songTitle";
-echo "<br />";
+
+
 
 
 $r2 = $mysqli->query("SELECT * FROM artists WHERE id='$artistTitle'");
 $song = $r2->fetch_assoc();
 $artistTitle = $song['artist_name'];
 
-echo "Artist is: ";
-echo $artistTitle;
+
 echo "<br />";
 
 
@@ -325,69 +325,18 @@ echo "<br />";
 ?>
 
 
-<br />
+THANKS FOR YOUR GOOD TASTE IN MUSIC! <br />
+THIS LINK IS A DIRECT LINK TO THE SONG <br />
+RIGHT CLICK AND SAVE AS <br />
+OR CLICK TO OPEN FILE IN YOUR BROWSER <br />
 
-<br />
-
-CLICK PLAY TO PLAY SONG  <br />
-
-
-<!-- play audio file but stop it from being downloadable -->
-<audio controls autobuffer onplay="log_stream1()" controls List="nodownload noremoteplayback">
-    <!-- get the source as a file from -->
-    <source src="http://www.waylostreams.com/phptest/mp323.php?id=<?php echo $song_id;?>" type="audio/mp3">
-</audio>
-
-<!--
-<script>
-    var isPaused = function () {
-        $.ajax({
-            url: "http://www.waylostreams.com/phptest/pauseSong.php?id=1&user=<?php echo $user_id;?>",
-            method: "GET"
-        }).done(function() {
-            var update_text = "you have paused this ";
-            $('#response2').empty().append(update_text);
-        });
-    };
-</script>
-
--->
-
-<span id="response2"></span>
-
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src="js/index.js"></script>
-
-<script>
-    <script>
-    var log_stream1 = function () {
-        $.ajax({
-            url: "http://www.waylostreams.com/phptest/streamsong.php?id=<?php echo $song_id;?>&user=<?php echo $user_id;?>",
-            method: "GET"
-        }).done(function(response) {
-            var update_text = "you have played this " + response + " times";
-            $('#response3').empty().append(update_text);
-        });
-    };
-</script>
+<a href=<?php echo $url; ?> download>
+<?php echo $url;?>
 
 
-<span id="response3"></span>
-<br />
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src="js/index.js"></script>
+</a>
 
-<?php
-$counter = $mysqli->query("SELECT number_plays FROM streams WHERE user_id='$user_id' AND song_id ='$id'") or die($mysqli->error);
-$counter = $counter->fetch_assoc();
-$counter = $counter['number_plays'];
-$counter = $counter + 1;
-$counter = $mysqli->escape_string($counter);
-echo "You have played this song: ";
-echo $counter;
-echo " times";
 
-?>
 
 
 <?php
@@ -406,33 +355,12 @@ $query = "SELECT song_id, SUM(number_plays) AS value_sum FROM streams WHERE song
 
 $result = $mysqli->query($query) or die($mysqli->error);
 
-// Print out result
-while($row = mysqli_fetch_array($result)){
-    echo "Total plays for this song to date: ". $row['value_sum'];
-    echo " plays";
-    echo "<br />";
-}
 
-/*
-$id = $mysqli->escape_string($id);
-$user_id = $mysqli->escape_string($user);
-
-$song_id = $mysqli->escape_string($id);
-$result1 = $mysqli->query("SELECT * FROM songs WHERE id='$song_id'");
-$song = $result->fetch_assoc();
-$purchase_cost = $song['stream_cost'];
-$buy_cost = $song['purchase_cost'];
-*/
 
 /// links back to artist . album and profile page
-?>
-<br />
-<a href='http://www.waylostreams.com/login-system/purchaseSong.php?id=<?php echo $song_id;?>&user=<?php echo $user_id;?>'> Click here to purchase this song </a>
-<br />
-purchase cost: <?php echo $buyCost; ?>
- credits
-<br/>
-<?php
+
+
+
 print "<br>";
 echo "<a href='http://www.waylostreams.com/login-system/searchByAlbum.php?id=$albumTitle&user=$user_id'>more songs from this album </a>";
 print "<br>";
@@ -443,20 +371,8 @@ print "<br>";
 <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
 <br />
 
-<?php
-
-echo "<br>";
-echo "ALBUM CREDITS:";
-echo "<b>";
-echo "<b>";
 
 
-
-?>
-
-<br />
-
-<?php echo $albumCredits; ?>
 
 <br />
 </body>
