@@ -36,6 +36,10 @@ $purchase_cost = $song['stream_cost'];
 $buy_cost = $song['purchase_cost'];
 
 
+
+$filename = $song['URL'];
+
+
 //////////           UPDATE STREAMS AND CREDITS FROM DATABASE
 
 
@@ -90,7 +94,7 @@ if ($exists2 !== null)
     $mysqli->query($sql) or die($mysqli->error);
 
     if($credits<0){
-        header("Location: http://www.waylostreams.com/login-system/profile.php");
+        header("Location: https://www.waylostreams.com/login-system/profile.php");
     }
 
     //echo $date;
@@ -227,7 +231,7 @@ else {
 <body>
 
 
-<a href="http://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
+<a href="https://www.waylostreams.com/login-system/buycredits.php">BUY CREDITS</a>
 <br />
 <br />
 <br />
@@ -278,6 +282,8 @@ $albumTitle = $song['album'];
 $artistTitle = $song['artist'];
 $songCost = $song['stream_cost'];
 $buyCost = $song['purchase_cost'];
+$filename = $song['URL'];
+
 
 
 
@@ -285,7 +291,6 @@ $buyCost = $song['purchase_cost'];
 echo "Song is: ";
 echo $songTitle;
 echo "<br />";
-
 
 
 // get album title
@@ -329,13 +334,16 @@ echo "<br />";
 
 <br />
 
+
+
 CLICK PLAY TO PLAY SONG  <br />
 
 
 <!-- play audio file but stop it from being downloadable -->
-<audio controls autobuffer onplay="log_stream1()" controls List="nodownload noremoteplayback">
+<audio controls autobuffer onplay="log_stream1()" controls controlsList="nodownload noremoteplayback">
     <!-- get the source as a file from -->
-    <source src="http://www.waylostreams.com/phptest/mp323.php?id=<?php echo $song_id;?>" type="audio/mp3">
+ <!--   <source src="https://www.waylostreams.com/phptest/mp323.php?id=<?php echo $song_id;?>" type="audio/mp3"> -->
+    <source src="<?php echo $filename;?>" type="audio/mp3">
 </audio>
 
 <!--
@@ -359,10 +367,10 @@ CLICK PLAY TO PLAY SONG  <br />
 <script src="js/index.js"></script>
 
 <script>
-    <script>
+
     var log_stream1 = function () {
         $.ajax({
-            url: "http://www.waylostreams.com/phptest/streamsong.php?id=<?php echo $song_id;?>&user=<?php echo $user_id;?>",
+            url: "https://www.waylostreams.com/phptest/streamsong.php?id=<?php echo $song_id;?>&user=<?php echo $user_id;?>",
             method: "GET"
         }).done(function(response) {
             var update_text = "you have played this " + response + " times";
@@ -434,9 +442,9 @@ purchase cost: <?php echo $buyCost; ?>
 <br/>
 <?php
 print "<br>";
-echo "<a href='http://www.waylostreams.com/login-system/searchByAlbum.php?id=$albumTitle&user=$user_id'>more songs from this album </a>";
+echo "<a href='https://www.waylostreams.com/login-system/searchByAlbum.php?id=$albumTitle&user=$user_id'>more songs from this album </a>";
 print "<br>";
-echo "<a href='http://www.waylostreams.com/login-system/searchByArtist.php?id=$artistTitle&user=$user_id'>more songs from this artist </a>";
+echo "<a href='https://www.waylostreams.com/login-system/searchByArtist.php?id=$artistTitle&user=$user_id'>more songs from this artist </a>";
 print "<br>";
 
 ?>
