@@ -5,11 +5,10 @@ session_start();
 
 
 // Check if user is logged in using the session variable
-if ( $_SESSION['logged_in'] != 1 ) {
+if ($_SESSION['logged_in'] != 1) {
     $_SESSION['message'] = "You must log in before viewing your profile page!";
     header("location: error.php");
-}
-else {
+} else {
     // Makes it easier to read
     $first_name = $_SESSION['first_name'];
     $last_name = $_SESSION['last_name'];
@@ -24,7 +23,7 @@ else {
 }
 ?>
 <!DOCTYPE html>
-<html >
+<html>
 <!--HTML page formatting -->
 <style>
     body {
@@ -44,8 +43,8 @@ else {
         color: black;
     }
 
-    a{
-    text-decoration: none;
+    a {
+        text-decoration: none;
     }
 
     /* unvisited link */
@@ -67,7 +66,6 @@ else {
     a:active {
         color: greenyellow;
     }
-
 
     button {
         background-color: #1ab188; /* Green */
@@ -91,28 +89,25 @@ else {
 <head>
 
 
-    <br />
+    <br/>
 
 </head>
 
 <body>
 
 
-
 <img src="waylostreams.jpg" alt="WAYLOSTREAMS">
-
 
 
 <p>
     <?php
 
     // Display message about account verification link only once
-    if ( isset($_SESSION['message']) )
-    {
+    if (isset($_SESSION['message'])) {
         echo $_SESSION['message'];
 
         // Don't annoy the user with more messages upon page refresh
-        unset( $_SESSION['message'] );
+        unset($_SESSION['message']);
     }
 
     ?>
@@ -121,7 +116,7 @@ else {
 <?php
 
 // Keep reminding the user this account is not active, until they activate
-if ( !$active ){
+if (!$active) {
     echo
     '<div class="info">
               Account is unverified, please confirm your email by clicking
@@ -131,31 +126,29 @@ if ( !$active ){
 
 ?>
 
-<?php echo "Hello ", $first_name.' '.$last_name; ?>
+<?php echo "Hello ", $first_name . ' ' . $last_name; ?>
 
 
-
-
-<br />
+<br/>
 
 
 BUY 10,000 CREDITS for US $10 with PAYPAL
 
 
 <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="E9V2SAV7HS668"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id"
+                                                             value="E9V2SAV7HS668"><input type="image"
+                                                                                          src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif"
+                                                                                          border="0" name="submit"
+                                                                                          alt="PayPal - The safer, easier way to pay online!">
 </form>
 
 
+<br/>
 
 
-
-<br />
-
-
-
-<a href="http://www.waylostreams.com/login-system/freecredits.php">click here to get 10 free credits for new users</a>
-<br />
+<a href="https://www.waylostreams.com/login-system/freecredits.php">click here to get 10 free credits for new users</a>
+<br/>
 
 
 <?php
@@ -186,49 +179,46 @@ $purchase_cost = $song['purchase_cost'];
 ?>
 
 
+<!-- creates forms for user entry -->
 
 
 <div class="form">
     <a>
         <form action="searchResult.php" method="post">
             <div class="field-wrap">
-                <p>Search Artists:  <input type="text" name="name" />
+                <p>Search Artists: <input type="text" name="name"/>
 
-                <input type="submit" /></p>
+                    <input type="submit"/></p>
             </div>
         </form>
 
 
         <form action="searchResultAlbums.php" method="post">
-            <p>Search Albums: <input type="text" name="name" />
+            <p>Search Albums: <input type="text" name="name"/>
 
-            <input type="submit" /></p>
+                <input type="submit"/></p>
         </form>
 
         <form action="searchResultSongs.php" method="post">
-            <p>Search Songs:  <input type="text" name="name" />
-            <input type="submit" /></p>
+            <p>Search Songs: <input type="text" name="name"/>
+                <input type="submit"/></p>
         </form>
 
         <form action="searchAlbumCredits.php" method="post">
-            <p>Search Album Credits:  <input type="text" name="name" />
+            <p>Search Album Credits: <input type="text" name="name"/>
 
-            <input type="submit" /></p>
+                <input type="submit"/></p>
         </form>
-
-
 
 
 </div>
 
 
-<br />
+<br/>
 
 
-
-<a href="http://www.waylostreams.com/login-system/artistArea.php">artists area / upload music </a>
-<br />
-
+<a href="https://www.waylostreams.com/login-system/artistArea.php">artists area / upload music </a>
+<br/>
 
 
 </body>
@@ -236,15 +226,17 @@ $purchase_cost = $song['purchase_cost'];
 
 <div class="navbar">
 
-    <br />
+    <br/>
     WWW.WAYLOSTREAMS.COM
-    <br />
+    <br/>
 
-    <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
+    <a href="logout.php">
+        <button class="button button-block" name="logout"/>
+        Log Out</button></a>
 
-    <br />
-    <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
-    <br />
+    <br/>
+    <a href="https://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+    <br/>
 
 
 </div>
