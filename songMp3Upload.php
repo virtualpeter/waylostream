@@ -63,12 +63,12 @@ if ($uploadOk == 0) {
         ?>
 
         <br />
-        <a href="http://www.waylostreams.com/login-system/artistArea.php">back to artists area / upload music </a>
+        <a href="https://www.waylostreams.com/login-system/artistArea.php">back to artists area / upload music </a>
         <br />
 
 
         <br />
-        <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+        <a href="https://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
         <br />
 
 
