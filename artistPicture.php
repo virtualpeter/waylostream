@@ -1,6 +1,7 @@
 <?php
 
 
+
 require 'db.php';
 session_start();
 
@@ -15,7 +16,7 @@ $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
 
 
 
-$albumName = $_GET['name'];
+$artistName = $_GET['name'];
 $target_dir = "albumCovers/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -52,33 +53,35 @@ if ($uploadOk == 0) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 
         // add image url to album data
-        $url = "http://waylostreams.com/login-system/albumCovers/";
+        $url = "https://waylostreams.com/login-system/albumCovers/";
         $url2 = $_FILES["fileToUpload"]["name"];
         $url3 = $url.$url2 ;
         //$url3 = "hello";
 
 
 
-        $sql = "UPDATE albums SET image_url = '$url3' WHERE album_title = '$albumName'";
+        $sql = "UPDATE artists SET image_url = '$url3' WHERE artist_name = '$artistName'";
         $mysqli->query($sql) or die($mysqli->error);
 
         ?>
 
         <br />
-<a href="https://www.waylostreams.com/login-system/createAlbum.php">Add another album </a>
-<br />
+        <a href="https://www.waylostreams.com/login-system/createArtist.php">Add another artist </a>
+        <br />
 
 
-<br />
-<a href="https://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
-<br />
+        <br />
+        <a href="https://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+        <br />
 
 
-     <?php
+        <?php
 
 
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+
+
 ?>
