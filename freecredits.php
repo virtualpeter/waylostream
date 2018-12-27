@@ -7,18 +7,19 @@ $email = $mysqli->escape_string($_SESSION['email']);
 $result = $mysqli->query("SELECT * FROM users WHERE email='$email'");
 $user = $result->fetch_assoc();
 $credits = $user['credits'];
+$verified = $user['active'];
 $freeCredits = $user['freeCreditBool'];
-if ($freeCredits<1) {
-    $credits = $credits + 10;
-    $sql = "UPDATE users SET credits='$credits' WHERE email='$email'";
-    $mysqli->query($sql);
-    $sql = "UPDATE users SET freeCreditBool= 1 WHERE email='$email'";
-    $mysqli->query($sql);
-    header("location: profile.php");
+if ($verified > 0) {
+    if ($freeCredits < 1) {
+        $credits = $credits + 10;
+        $sql = "UPDATE users SET credits='$credits' WHERE email='$email'";
+        $mysqli->query($sql);
+        $sql = "UPDATE users SET freeCreditBool= 1 WHERE email='$email'";
+        $mysqli->query($sql);
+        header("location: profile.php");
+    } else {
+        header("location: profile.php");
+    }
 }
-else {
-    header("location: profile.php");
-}
-
 
 
