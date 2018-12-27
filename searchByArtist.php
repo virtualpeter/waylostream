@@ -56,7 +56,7 @@ foreach($reslt2 as $key){
     <?php
 
 
-    echo "<a href='http://www.waylostreams.com/login-system/searchByAlbum.php?id=$title&user=$user_id'>Listen to: $album_name</a>";
+    echo "<a href='https://www.waylostreams.com/login-system/searchByAlbum.php?id=$title&user=$user_id'>Listen to: $album_name</a>";
     print "<br>";
 
 
@@ -84,7 +84,7 @@ foreach($exists as $key){
     $songCost = $song['stream_cost'];
 
 
-    echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>Listen to: $song_name</a>";
+    echo "<a href='https://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>Listen to: $song_name</a>";
     echo " cost ";
     echo $songCost;
     echo " credits";
@@ -105,6 +105,6 @@ print "<br>";
 // return to home page link
 ?>
 <br />
-<a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+<a href="https://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
 <br />
 

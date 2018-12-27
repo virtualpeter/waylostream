@@ -50,7 +50,7 @@ foreach($exists as $key){
 
 
 
-    echo "<a href='http://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>  Listen to: $song_name</a>";
+    echo "<a href='https://www.waylostreams.com/login-system/playSong.php?id=$name&user=$user_id'>  Listen to: $song_name</a>";
     echo " :song cost ";
     echo $songCost;
     echo " credits";
@@ -62,7 +62,7 @@ foreach($exists as $key){
 // return to home page link
 ?>
 <br />
-<a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+<a href="https://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
 <br />
 
 
