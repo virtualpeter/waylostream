@@ -14,9 +14,9 @@ $db = 'sean';
 $dbport = 3306;
 $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
 
-
 $id=$_REQUEST['id'];
-$query = "DELETE FROM songs WHERE title= '$id' and artist_email='$email'";
-$mysqli->query($query) or die($mysqli->error);
+$query = $mysqli->prepare( "DELETE FROM songs WHERE title= '$id' and artist_email='$email'");
+$query->bind_param('is', $id, $email);
+$query->execute();
 header("Location: viewSongData.php");
 ?>
