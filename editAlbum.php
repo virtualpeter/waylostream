@@ -26,8 +26,13 @@ $db = 'sean';
 $dbport = 3306;
 $mysqli = new mysqli($host,$user,$pass,$db,$dbport) or die($mysqli->error);
 
+
+
 $id=$_REQUEST['id'];
-$result = $mysqli->query("SELECT * FROM albums WHERE album_title='$id'") or die($mysqli->error);
+
+$result = $mysqli->prepare("SELECT * FROM albums WHERE album_title='$id'");
+$result->bind_param('is', $id, $email);
+$result->execute();
 
 $row = mysqli_fetch_assoc($result);
 ?>
@@ -49,24 +54,25 @@ $row = mysqli_fetch_assoc($result);
     {
         $id=$_REQUEST['id'];
 
-        $album_artist =$_REQUEST['album_artist'];
-        $result = $mysqli->query("select * from artists where artist_name = '$album_artist'") or die($mysqli->error);
 
-        $row = mysqli_fetch_assoc($result);
-        $album_artist = $row['id'];
+        $album_artist =$_REQUEST['album_artist'];
+
+        $result = $mysqli->prepare("select * from artists where artist_name = '$album_artist'");
+        $result->bind_param('s', $album_artist);
+        $result->execute();
+        
+
+        $row1 = mysqli_fetch_assoc($result);
+        $album_artist = $row1['id'];
         $album_artist = intval($album_artist);
 
-        //
-        //echo $purchase_cost;
+
         $credits =$_REQUEST['credits'];
-        //$credits = mysqli_escape_string($credits);
+        $album_title = $_REQUEST['album_title'];
 
-        //
-        //echo $stream_cost;
-
-        // $update="update songs set purchase_cost= 2 , stream_cost = 3 where title='$id'";
-        $update="update albums set album_artist= '$album_artist' , credits= '$credits'  where album_title = '$id'";
-        $mysqli->query($update) or die($mysqli->error);
+        $update= $mysqli->prepare("update albums set album_title= '$album_title' , credits= '$credits'  where album_title = '$id'");
+        $update->bind_param('sii', $album_title, $id);
+        $update->execute();
         $status = "Record Updated Successfully. </br></br>
 <a href='viewAlbumData.php'>View Updated Records</a>";
         echo '<p style="color:#FF0000;">'.$status.'</p>';
@@ -79,8 +85,8 @@ $row = mysqli_fetch_assoc($result);
             <input name="id" type="hidden" value="<?php echo $row['album_title'];?>" />
             Change album artist
             <br>
-            <p><input type="text" name="album_artist" placeholder="Enter new artist name"
-                      required value="<?php echo $row['album_artist'];?>" /></p>
+            <p><input type="text" name="album_title" placeholder="Enter new album name"
+                      required value="<?php echo $row['album_title'];?>" /></p>
             Change credits
             <br>
             <p><input type="text" name="credits" placeholder="Enter new credits"
