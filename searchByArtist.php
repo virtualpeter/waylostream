@@ -10,7 +10,9 @@ require 'db.php';
 // get artist id from page call
 $artist = $_GET['id'];
 //echo $artist;
-$exists = $mysqli->query("SELECT id FROM songs WHERE artist='$artist'") or die($mysqli->error);
+$exists = $mysqli->prepare("SELECT id FROM songs WHERE artist='$artist'");
+$exists->bind_param('s', $artist);
+$exists->execute();
 //print_r($exists);
 
 
