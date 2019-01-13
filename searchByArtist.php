@@ -10,9 +10,7 @@ require 'db.php';
 // get artist id from page call
 $artist = $_GET['id'];
 //echo $artist;
-$exists = $mysqli->prepare("SELECT id FROM songs WHERE artist='$artist'");
-$exists->bind_param('s', $artist);
-$exists->execute();
+$exists = $mysqli->query("SELECT id FROM songs WHERE artist='$artist'") or die($mysqli->error);
 //print_r($exists);
 
 
@@ -109,4 +107,3 @@ print "<br>";
 <br />
 <a href="https://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
 <br />
-
