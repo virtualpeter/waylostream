@@ -46,17 +46,18 @@ else {
             width: 100%; /* Full width */
         }
 
+        body {
+            background: #D3D3D3D3; 
+
+            font-family: 'Titillium Web', sans-serif;
+        }
 
 
 
 
 
         /*
-        body {
-            background: #D3D3D3D3; 
 
-            font-family: 'Titillium Web', sans-serif;
-        }
 
         input[type=text] {
             background-color: white;

@@ -38,12 +38,12 @@ if ($_SESSION['logged_in'] != 1) {
         height: 30%;
 
     }
+body {
+background: #D3D3D3D3; 
+    font-family: 'Titillium Web', sans-serif;
+}
 
-/*
-    body {
-        background: #D3D3D3D3; 
-        font-family: 'Titillium Web', sans-serif;
-    }
+
 
 
 

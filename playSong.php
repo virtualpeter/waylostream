@@ -181,11 +181,13 @@ width: 30%;
 height: 30%;
     
 }
-/*
+
 body {
 background: #D3D3D3D3; 
     font-family: 'Titillium Web', sans-serif;
 }
+/*
+
 
 input[type=text] {
     background-color: white;
