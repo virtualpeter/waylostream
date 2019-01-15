@@ -34,13 +34,9 @@ else {
 ?>
     <!DOCTYPE html>
     <html >
+
+
     <style>
-        body {
-            background: #D3D3D3D3; /* #c1bdba */
-
-            font-family: 'Titillium Web', sans-serif;
-        }
-
 
         /* The navigation bar */
         .navbar {
@@ -48,6 +44,18 @@ else {
             top: 0px;
             left: 600px;
             width: 100%; /* Full width */
+        }
+
+
+
+
+
+
+        /*
+        body {
+            background: #D3D3D3D3; 
+
+            font-family: 'Titillium Web', sans-serif;
         }
 
         input[type=text] {
@@ -63,24 +71,23 @@ else {
             color: #1ab188;
         }
 
-        /* visited link */
+        
         a:visited {
             color: blue;
         }
 
-        /* mouse over link */
         a:hover {
             color: green;
         }
 
-        /* selected link */
+    
         a:active {
             color: greenyellow;
         }
 
 
         button {
-            background-color: #1ab188; /* Green */
+            background-color: #1ab188; 
             border: none;
             color: black;
             padding: 15px 32px;
@@ -90,12 +97,14 @@ else {
             font-size: 16px;
         }
 
+
+
+*/
         img {
             width: 30%;
             height: 30%;
 
         }
-
     </style>
     <head>
         <meta charset="UTF-8">
@@ -106,7 +115,7 @@ else {
 <body>
 <div class="form">
 
-
+-->
 
     <br>
 

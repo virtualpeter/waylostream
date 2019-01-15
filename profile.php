@@ -26,17 +26,26 @@ if ($_SESSION['logged_in'] != 1) {
 <html>
 <!--HTML page formatting -->
 <style>
+    .navbar {
+        position: fixed;
+        top: 0px;
+        left: 600px;
+        width: 100%; 
+    }
+
+    img {
+        width: 30%;
+        height: 30%;
+
+    }
+
+/*
     body {
-        background: #D3D3D3D3; /* #c1bdba */
+        background: #D3D3D3D3; 
         font-family: 'Titillium Web', sans-serif;
     }
 
-    .navbar {
-        position: fixed; /* Set the navbar to fixed position */
-        top: 0px;
-        left: 600px;
-        width: 100%; /* Full width */
-    }
+
 
     input[type=text] {
         background-color: white;
@@ -47,28 +56,28 @@ if ($_SESSION['logged_in'] != 1) {
         text-decoration: none;
     }
 
-    /* unvisited link */
+
     a:link {
         color: #1ab188;
     }
 
-    /* visited link */
+
     a:visited {
         color: blue;
     }
 
-    /* mouse over link */
+
     a:hover {
         color: green;
     }
 
-    /* selected link */
+
     a:active {
         color: greenyellow;
     }
 
     button {
-        background-color: #1ab188; /* Green */
+        background-color: #1ab188;
         border: none;
         color: black;
         padding: 15px 32px;
@@ -78,11 +87,8 @@ if ($_SESSION['logged_in'] != 1) {
         font-size: 16px;
     }
 
-    img {
-        width: 30%;
-        height: 30%;
 
-    }
+*/
 
 </style>
 

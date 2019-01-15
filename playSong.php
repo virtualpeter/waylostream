@@ -175,8 +175,15 @@
 <html >
 
 <style>
+
+img {
+width: 30%;
+height: 30%;
+    
+}
+/*
 body {
-background: #D3D3D3D3; /* #c1bdba */
+background: #D3D3D3D3; 
     font-family: 'Titillium Web', sans-serif;
 }
 
@@ -185,29 +192,29 @@ input[type=text] {
 color: black;
 }
 
-/* unvisited link */
+
 a:link {
 color: #1ab188;
 }
 
-/* visited link */
+
 a:visited {
 color: blue;
 }
 
-/* mouse over link */
+
 a:hover {
 color: green;
 }
 
-/* selected link */
+
 a:active {
 color: greenyellow;
 }
 
 
 button {
-    background-color: #1ab188; /* Green */
+    background-color: #1ab188;
 border: none;
 color: black;
 padding: 15px 32px;
@@ -217,12 +224,9 @@ display: inline-block;
     font-size: 16px;
 }
 
-img {
-width: 30%;
-height: 30%;
-    
-}
 
+
+*/
 </style>
 <head>
 <?php // include 'css/css.html'; ?>
