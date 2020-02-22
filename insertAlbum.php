@@ -52,12 +52,12 @@ $exists2 = $exists2['album_title'];
 if ($exists2 !== null){ echo "Album Exists already for that artist";
 ?>
 <br />
-<a href="http://www.waylostreams.com/login-system/createAlbum.php">Add another album </a>
+<a href="/login-system/createAlbum.php">Add another album </a>
 <br />
 
 
 <br />
-<a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+<a href="/login-system/profile.php">Go back to profile page </a>
 <br />
 <?php
 }
@@ -65,7 +65,7 @@ else {
 
 
 // Attempt insert query execution
-    $sql = "INSERT INTO albums (album_title, album_artist, release_date, image_url, credits, artist_email)" . " VALUES ('$album_name', '$name', now(), 'http://waylostreams.com/album-covers/step0001.jpg' , '$credits', '$email')";
+    $sql = "INSERT INTO albums (album_title, album_artist, release_date, image_url, credits, artist_email)" . " VALUES ('$album_name', '$name', now(), '/album-covers/step0001.jpg' , '$credits', '$email')";
 
     /*
     if(mysqli_query($link, $sql)){

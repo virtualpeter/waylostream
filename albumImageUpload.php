@@ -52,7 +52,7 @@ if ($uploadOk == 0) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 
         // add image url to album data
-        $url = "http://waylostreams.com/login-system/albumCovers/";
+        $url = "/login-system/albumCovers/";
         $url2 = $_FILES["fileToUpload"]["name"];
         $url3 = $url.$url2 ;
         //$url3 = "hello";
@@ -65,12 +65,12 @@ if ($uploadOk == 0) {
         ?>
 
         <br />
-<a href="https://www.waylostreams.com/login-system/createAlbum.php">Add another album </a>
+<a href="/login-system/createAlbum.php">Add another album </a>
 <br />
 
 
 <br />
-<a href="https://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+<a href="/login-system/profile.php">Go back to profile page </a>
 <br />
 
 

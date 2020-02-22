@@ -153,7 +153,7 @@ BUY 10,000 CREDITS for US $10 with PAYPAL
 <br/>
 
 
-<a href="https://www.waylostreams.com/login-system/freecredits.php">click here to get 10 free credits for new users</a>
+<a href="/login-system/freecredits.php">click here to get 10 free credits for new users</a>
 <br/>
 
 
@@ -223,7 +223,7 @@ $purchase_cost = $song['purchase_cost'];
 <br/>
 
 
-<a href="https://www.waylostreams.com/login-system/artistArea.php">artists area / upload music </a>
+<a href="/login-system/artistArea.php">artists area / upload music </a>
 <br/>
 
 
@@ -241,7 +241,7 @@ $purchase_cost = $song['purchase_cost'];
         Log Out</button></a>
 
     <br/>
-    <a href="https://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+    <a href="/login-system/profile.php">Go back to profile page </a>
     <br/>
 
 

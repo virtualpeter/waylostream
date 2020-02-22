@@ -103,7 +103,7 @@ if ($exists2 !== null)
     $mysqli->query($sql) or die($mysqli->error);
 
     if($credits<0){
-        header("Location: http://www.waylostreams.com/login-system/profile.php");
+        header("Location: /login-system/profile.php");
     }
 
     //echo $date;
@@ -362,13 +362,13 @@ $result = $mysqli->query($query) or die($mysqli->error);
 
 
 print "<br>";
-echo "<a href='https://www.waylostreams.com/login-system/searchByAlbum.php?id=$albumTitle&user=$user_id'>more songs from this album </a>";
+echo "<a href='/login-system/searchByAlbum.php?id=$albumTitle&user=$user_id'>more songs from this album </a>";
 print "<br>";
-echo "<a href='https://www.waylostreams.com/login-system/searchByArtist.php?id=$artistTitle&user=$user_id'>more songs from this artist </a>";
+echo "<a href='/login-system/searchByArtist.php?id=$artistTitle&user=$user_id'>more songs from this artist </a>";
 print "<br>";
 
 ?>
-<a href="https://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+<a href="/login-system/profile.php">Go back to profile page </a>
 <br />
 
 

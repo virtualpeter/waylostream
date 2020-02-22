@@ -29,7 +29,7 @@ foreach($exists as $key){
     $name = $name['title'];
 
 
-    echo "<a href='https://www.waylostreams.com/login-system/playSong.php?id=$n&user=$user_id'>  Listen to: $name</a>";
+    echo "<a href='/login-system/playSong.php?id=$n&user=$user_id'>  Listen to: $name</a>";
     print "<br>";
 
 }
@@ -37,5 +37,5 @@ foreach($exists as $key){
 // return to home page link
 ?>
 <br />
-<a href="https://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+<a href="/login-system/profile.php">Go back to profile page </a>
 <br />

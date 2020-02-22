@@ -54,7 +54,7 @@ else { // Email doesn't already exist in a database, proceed...
 
         Please click this link to activate your account:
 
-        http://waylostreams.com/login-system/verify.php?email='.$email.'&hash='.$hash;
+        /login-system/verify.php?email='.$email.'&hash='.$hash;
 
         mail( $to, $subject, $message_body, $headers );
 

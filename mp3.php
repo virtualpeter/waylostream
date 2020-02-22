@@ -2,7 +2,7 @@
     $id = $_GET['id'];
     
     if($id == 1){
-        $filename = "http://www.waylostreams.com/mp3/cem.mp3";
+        $filename = "/mp3/cem.mp3";
         if(is_file($filename))
         {
             header('Content-Type: audio/mpeg');

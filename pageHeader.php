@@ -172,7 +172,7 @@ else {
         <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
 
         <br />
-        <a href="http://www.waylostreams.com/login-system/profile.php">Go back to profile page </a>
+        <a href="/login-system/profile.php">Go back to profile page </a>
         <br />
 
 
